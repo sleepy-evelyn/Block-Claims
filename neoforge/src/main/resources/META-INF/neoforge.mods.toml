@@ -1,15 +1,15 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+issueTrackerURL = "https://github.com/sleepy-evelyn/Block-Claims/issues"
+license = "MIT"
 
 [[mods]]
 modId = "blockclaims"
 version = "${version}"
 displayName = "Block Claims"
-authors = "Me!"
+authors = "SleepyEvelyn"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+A wrapper for claims mods that allows you to claim, configure and sell land with simple blocks
 '''
 #logoFile = ""
 

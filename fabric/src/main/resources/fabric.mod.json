@@ -3,23 +3,22 @@
   "id": "blockclaims",
   "version": "${version}",
   "name": "Block Claims",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "A wrapper for claims mods that allows you to claim, configure and sell land with simple blocks",
   "authors": [
-    "Me!"
+    "SleepyEvelyn"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/sleepy-evelyn/Block-Claims"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/blockclaims/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.sleepy_evelyn.blockclaims.fabric.ExampleModFabric"
+      "dev.sleepy_evelyn.blockclaims.fabric.BlockClaimsFabric"
     ],
     "client": [
-      "dev.sleepy_evelyn.blockclaims.fabric.client.ExampleModFabricClient"
+      "dev.sleepy_evelyn.blockclaims.fabric.client.BlockClaimsFabricClient"
     ]
   },
   "mixins": [
@@ -31,8 +30,5 @@
     "java": ">=21",
     "architectury": ">=13.0.8",
     "fabric-api": "*"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }

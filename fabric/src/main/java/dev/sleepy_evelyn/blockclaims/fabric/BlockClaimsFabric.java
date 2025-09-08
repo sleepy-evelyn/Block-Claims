@@ -2,9 +2,11 @@ package dev.sleepy_evelyn.blockclaims.fabric;
 
 import net.fabricmc.api.ModInitializer;
 
-import dev.sleepy_evelyn.blockclaims.ExampleMod;
+import dev.sleepy_evelyn.blockclaims.BlockClaims;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.network.chat.Component;
 
-public final class ExampleModFabric implements ModInitializer {
+public final class BlockClaimsFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -12,6 +14,6 @@ public final class ExampleModFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        ExampleMod.init();
+        BlockClaims.init();
     }
 }
