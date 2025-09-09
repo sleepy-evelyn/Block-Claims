@@ -1,12 +1,9 @@
-package dev.sleepy_evelyn.blockclaims.fabric;
+package dev.sleepy_evelyn.territorial.fabric;
 
+import dev.sleepy_evelyn.blockclaims.Territorial;
 import net.fabricmc.api.ModInitializer;
 
-import dev.sleepy_evelyn.blockclaims.BlockClaims;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.network.chat.Component;
-
-public final class BlockClaimsFabric implements ModInitializer {
+public final class TerritorialFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -14,6 +11,6 @@ public final class BlockClaimsFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        BlockClaims.init();
+        Territorial.init();
     }
 }

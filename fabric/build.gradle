@@ -24,13 +24,23 @@ configurations {
     }
 }
 
+repositories {
+    maven {
+        name = "FzzyMaven"
+        url = "https://maven.fzzyhmstrs.me/"
+    }
+}
+
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version"
 
     // Fabric API
-    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
-    // Architectury API
-    modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version+$minecraft_version"
+    // Fzzy Config
+    modRuntimeOnly "me.fzzyhmstrs:fzzy_config:${fzzy_config_version}"
+    // Development QOL
+    modLocalRuntime "dev.emi:emi-fabric:$emi_version+$minecraft_version"
+    modLocalRuntime "maven.modrinth:sodium:mc$minecraft_version-$sodium_version-fabric"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')

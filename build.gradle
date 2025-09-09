@@ -11,6 +11,29 @@ architectury {
 allprojects {
     group = rootProject.maven_group
     version = rootProject.mod_version
+
+    repositories {
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/"
+        }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            // Prevent searching through all imports
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
+        maven {
+            name = "FzzyMaven"
+            url = "https://maven.fzzyhmstrs.me/"
+        }
+    }
 }
 
 subprojects {
@@ -21,13 +44,6 @@ subprojects {
     base {
         // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
         archivesName = "$rootProject.archives_name-$project.name"
-    }
-
-    repositories {
-        maven {
-            name = "FzzyMaven"
-            url = "https://maven.fzzyhmstrs.me/"
-        }
     }
 
     loom {

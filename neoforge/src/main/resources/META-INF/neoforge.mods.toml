@@ -4,35 +4,35 @@ issueTrackerURL = "https://github.com/sleepy-evelyn/Block-Claims/issues"
 license = "MIT"
 
 [[mods]]
-modId = "blockclaims"
+modId = "territorial"
 version = "${version}"
-displayName = "Block Claims"
+displayName = "Territorial Block Claims"
 authors = "SleepyEvelyn"
 description = '''
 A wrapper for claims mods that allows you to claim, configure and sell land with simple blocks
 '''
 #logoFile = ""
 
-[[dependencies.blockclaims]]
+[[dependencies.territorial]]
 modId = "neoforge"
 type = "required"
 versionRange = "[21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.blockclaims]]
+[[dependencies.territorial]]
 modId = "minecraft"
 type = "required"
 versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.blockclaims]]
-modId = "architectury"
+[[dependencies.territorial]]
+modId = "fzzy_config"
 type = "required"
-versionRange = "[13.0.8,)"
+versionRange = "[0.7,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]
-config = "blockclaims.mixins.json"
+config = "territorial.mixins.json"

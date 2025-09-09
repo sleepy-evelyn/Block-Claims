@@ -1,34 +1,34 @@
 {
   "schemaVersion": 1,
-  "id": "blockclaims",
+  "id": "territorial",
   "version": "${version}",
-  "name": "Block Claims",
+  "name": "Territorial Block Claims",
   "description": "A wrapper for claims mods that allows you to claim, configure and sell land with simple blocks",
   "authors": [
     "SleepyEvelyn"
   ],
   "contact": {
-    "sources": "https://github.com/sleepy-evelyn/Block-Claims"
+    "sources": "https://github.com/sleepy-evelyn/Territorial-Block-Claims"
   },
   "license": "MIT",
   "icon": "assets/blockclaims/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.sleepy_evelyn.blockclaims.fabric.BlockClaimsFabric"
+      "dev.sleepy_evelyn.territorial.fabric.TerritorialFabric"
     ],
     "client": [
-      "dev.sleepy_evelyn.blockclaims.fabric.client.BlockClaimsFabricClient"
+      "dev.sleepy_evelyn.territorial.fabric.client.TerritorialFabricClient"
     ]
   },
   "mixins": [
-    "blockclaims.mixins.json"
+    "territorial.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.17.2",
     "minecraft": "~1.21.1",
     "java": ">=21",
-    "architectury": ">=13.0.8",
+    "fzzy_config": ">=0.7",
     "fabric-api": "*"
   }
 }
