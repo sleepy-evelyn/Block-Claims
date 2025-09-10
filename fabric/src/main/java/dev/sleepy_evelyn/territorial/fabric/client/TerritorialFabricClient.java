@@ -1,6 +1,6 @@
 package dev.sleepy_evelyn.territorial.fabric.client;
 
-import dev.sleepy_evelyn.blockclaims.client.TerritorialClient;
+import dev.sleepy_evelyn.territorial.client.TerritorialClient;
 import net.fabricmc.api.ClientModInitializer;
 
 public final class TerritorialFabricClient implements ClientModInitializer {

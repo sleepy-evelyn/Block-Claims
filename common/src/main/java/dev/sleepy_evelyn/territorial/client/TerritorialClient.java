@@ -1,6 +1,4 @@
-package dev.sleepy_evelyn.blockclaims.client;
-
-import dev.sleepy_evelyn.blockclaims.config.TerritorialClientConfig;
+package dev.sleepy_evelyn.territorial.client;
 
 public class TerritorialClient {
     //public static TerritorialClientConfig config = ConfigApiJava.registerAndLoadConfig(TerritorialClientConfig::new, RegisterType.CLIENT);

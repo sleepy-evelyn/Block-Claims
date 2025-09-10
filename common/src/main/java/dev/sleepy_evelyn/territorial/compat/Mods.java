@@ -1,4 +1,4 @@
-package dev.sleepy_evelyn.blockclaims.compat;
+package dev.sleepy_evelyn.territorial.compat;
 
 import java.util.Locale;
 import java.util.function.Supplier;

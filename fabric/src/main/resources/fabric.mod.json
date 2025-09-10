@@ -19,6 +19,9 @@
     ],
     "client": [
       "dev.sleepy_evelyn.territorial.fabric.client.TerritorialFabricClient"
+    ],
+    "fabric-datagen": [
+      "dev.sleepy_evelyn.territorial.fabric.client.datagen.ClientDataGenFabric"
     ]
   },
   "mixins": [

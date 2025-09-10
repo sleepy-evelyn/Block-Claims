@@ -1,4 +1,4 @@
-package dev.sleepy_evelyn.blockclaims.blocks;
+package dev.sleepy_evelyn.territorial.blocks;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

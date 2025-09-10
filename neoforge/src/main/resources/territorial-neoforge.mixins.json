@@ -1,11 +1,12 @@
 {
   "required": true,
-  "package": "dev.sleepy_evelyn.territorial.mixin",
+  "package": "dev.sleepy_evelyn.territorial.neoforge.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
   ],
   "mixins": [
+    "ArchDataGenFixMixin"
   ],
   "injectors": {
     "defaultRequire": 1

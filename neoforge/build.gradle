@@ -7,6 +7,23 @@ architectury {
     neoForge()
 }
 
+sourceSets {
+    main {
+        resources.srcDir file("src/generated")
+    }
+}
+
+loom {
+    runs {
+        data {
+            data()
+            programArgs.addAll '--mod', "territorial",
+                    '--output', file('src/generated').getAbsolutePath(),
+                    '--all' // --runClient is broken for now
+        }
+    }
+}
+
 configurations {
     common {
         canBeResolved = true
@@ -33,12 +50,19 @@ repositories {
             includeGroupAndSubgroups "cpw.mods"
         }
     }
+    maven {
+        name = "Kotlin For Forge"
+        url = "https://thedarkcolour.github.io/KotlinForForge/"
+    }
 }
 
 dependencies {
     neoForge "net.neoforged:neoforge:$neoforge_version"
 
     // TODO - Fzzy config and KotlinForForge have to be manually added to the mod directory for now
+
+    // Fzzy Config
+    modCompileOnly ("me.fzzyhmstrs:fzzy_config:$fzzy_config_version+neoforge")
 
     // Development QOL
     modLocalRuntime "dev.emi:emi-neoforge:$emi_version+$minecraft_version"

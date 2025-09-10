@@ -11,6 +11,21 @@ architectury {
 allprojects {
     group = rootProject.maven_group
     version = rootProject.mod_version
+}
+
+subprojects {
+    apply plugin: 'dev.architectury.loom'
+    apply plugin: 'architectury-plugin'
+    apply plugin: 'maven-publish'
+
+    base {
+        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
+        archivesName = "$rootProject.archives_name-$project.name"
+    }
+
+    loom {
+        silentMojangMappingsLicense()
+    }
 
     repositories {
         maven {
@@ -33,21 +48,6 @@ allprojects {
             name = "FzzyMaven"
             url = "https://maven.fzzyhmstrs.me/"
         }
-    }
-}
-
-subprojects {
-    apply plugin: 'dev.architectury.loom'
-    apply plugin: 'architectury-plugin'
-    apply plugin: 'maven-publish'
-
-    base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
-    }
-
-    loom {
-        silentMojangMappingsLicense()
     }
 
     dependencies {

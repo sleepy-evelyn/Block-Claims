@@ -1,6 +1,6 @@
 package dev.sleepy_evelyn.territorial.neoforge;
 
-import dev.sleepy_evelyn.blockclaims.Territorial;
+import dev.sleepy_evelyn.territorial.Territorial;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 

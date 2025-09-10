@@ -1,6 +1,6 @@
 package dev.sleepy_evelyn.territorial.fabric;
 
-import dev.sleepy_evelyn.blockclaims.Territorial;
+import dev.sleepy_evelyn.territorial.Territorial;
 import net.fabricmc.api.ModInitializer;
 
 public final class TerritorialFabric implements ModInitializer {
