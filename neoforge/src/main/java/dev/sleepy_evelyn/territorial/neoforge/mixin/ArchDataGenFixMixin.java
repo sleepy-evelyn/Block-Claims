@@ -11,16 +11,15 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 /*
- * This is a modified version of Puzzle-libs Architectory datagen fix for Neoforge.
- * It allows the gradle task to exit early instead of hanging.
- *
- * The class has been modified only for the purposes of suppressing warnings within InteliJ
- *
- * SPDX-License-Identifier: MPL-2.0
- * Modified by: Sleepy-Evelyn on 2025-9
- * Link: https://github.com/Fuzss/puzzleslib/blob/main/src/main/java/com/fuzss/puzzleslib/PuzzleHelper.java
- *
  * Copyright (c) 2025 Fuzss
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. 
+ * A description of the license is available here: https://www.mozilla.org/en-US/MPL/2.0/.
+ *
+ * - Modified by: Sleepy-Evelyn on 2025-9
+ * - Modifications: Restructured the class to prevent warnings in Intelij
+ * - Source file: https://github.com/Fuzss/puzzleslib/blob/main/1.21.1/NeoForge/src/main/java/fuzs/puzzleslib/neoforge/mixin/DatagenModLoaderNeoForgeMixin.java
  */
 @Mixin(value = DatagenModLoader.class, remap = false)
 public class ArchDataGenFixMixin {
