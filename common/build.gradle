@@ -2,6 +2,12 @@ architectury {
     common rootProject.enabled_platforms.split(',')
 }
 
+// Common Data Generation
+tasks.register("runData") {
+    dependsOn project(":fabric").tasks.named("runDatagen")
+    dependsOn project(":neoforge").tasks.named("runData")
+}
+
 dependencies {
     // Only depending on Fabric Loader for @Environment annotation
     modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version"
