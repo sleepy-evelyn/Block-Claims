@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * Copyright (c) 2025 Fuzss
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. 
+ * License, v. 2.0.
  * A description of the license is available here: https://www.mozilla.org/en-US/MPL/2.0/.
  *
  * - Modified by: Sleepy-Evelyn on 2025-9
