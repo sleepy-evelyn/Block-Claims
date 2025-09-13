@@ -3,9 +3,18 @@ architectury {
 }
 
 // Common Data Generation
-tasks.register("runData") {
+/**tasks.register("runData") {
     dependsOn project(":fabric").tasks.named("runDatagen")
     dependsOn project(":neoforge").tasks.named("runData")
+}**/
+
+sourceSets {
+    main {
+        resources { // include generated resources in resources
+            srcDir("src/generated/resources")
+            exclude(".cache/**")
+        }
+    }
 }
 
 dependencies {

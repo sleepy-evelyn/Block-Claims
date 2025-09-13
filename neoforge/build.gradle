@@ -7,23 +7,6 @@ architectury {
     neoForge()
 }
 
-sourceSets {
-    main {
-        resources.srcDir file("src/generated")
-    }
-}
-
-loom {
-    runs {
-        data {
-            data()
-            programArgs.addAll '--mod', "territorial",
-                    '--output', file('src/generated').getAbsolutePath(),
-                    '--all' // --runClient is broken for now
-        }
-    }
-}
-
 configurations {
     common {
         canBeResolved = true

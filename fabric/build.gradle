@@ -7,12 +7,14 @@ architectury {
     fabric()
 }
 
+def commonProject = project(":common")
 fabricApi {
     configureDataGeneration() {
-        client = true
-        createSourceSet = true
         modId = "territorial"
-        outputDirectory = file("src/generated")
+        outputDirectory = commonProject.file("src/generated/resources")
+        client = true
+        addToResources = false
+        createSourceSet = false
     }
 }
 
