@@ -21,7 +21,7 @@
       "dev.sleepy_evelyn.territorial.fabric.client.TerritorialFabricClient"
     ],
     "fabric-datagen": [
-      "dev.sleepy_evelyn.territorial.fabric.client.datagen.ClientDataGenFabric"
+      "dev.sleepy_evelyn.territorial.fabric.datagen.TerritorialDataGen"
     ]
   },
   "mixins": [

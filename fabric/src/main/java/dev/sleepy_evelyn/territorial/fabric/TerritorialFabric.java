@@ -1,6 +1,7 @@
 package dev.sleepy_evelyn.territorial.fabric;
 
 import dev.sleepy_evelyn.territorial.Territorial;
+import dev.sleepy_evelyn.territorial.fabric.events.CommonEventsFabric;
 import net.fabricmc.api.ModInitializer;
 
 public final class TerritorialFabric implements ModInitializer {
@@ -12,5 +13,6 @@ public final class TerritorialFabric implements ModInitializer {
 
         // Run our common setup.
         Territorial.init();
+        CommonEventsFabric.init();
     }
 }

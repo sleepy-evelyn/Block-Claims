@@ -33,6 +33,3 @@ type = "required"
 versionRange = "[0.7,)"
 ordering = "AFTER"
 side = "BOTH"
-
-[[mixins]]
-config = "territorial-neoforge.mixins.json"

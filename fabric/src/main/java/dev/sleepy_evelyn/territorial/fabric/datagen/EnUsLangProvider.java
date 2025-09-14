@@ -1,4 +1,4 @@
-package dev.sleepy_evelyn.territorial.fabric.client.datagen;
+package dev.sleepy_evelyn.territorial.fabric.datagen;
 
 import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.config.TerritorialClientConfig;
@@ -11,8 +11,8 @@ import net.minecraft.core.HolderLookup;
 
 import java.util.concurrent.CompletableFuture;
 
-public class EnUsLangFabric extends FabricLanguageProvider {
-    protected EnUsLangFabric(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+class EnUsLangProvider extends FabricLanguageProvider {
+    protected EnUsLangProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, "en_us", registryLookup);
     }
 
