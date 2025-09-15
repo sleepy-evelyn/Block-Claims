@@ -1,5 +1,8 @@
-package dev.sleepy_evelyn.territorial.blocks;
+package dev.sleepy_evelyn.territorial.block;
 
+import dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSources;
+import dev.sleepy_evelyn.territorial.util.MovementUtils;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -7,6 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -16,12 +20,20 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
+import java.util.Properties;
 import java.util.function.Predicate;
 
 public class OmniscientObsidianBlock extends Block implements BlockBreakCancellable {
 
+    public static final BooleanProperty ANGRY = BooleanProperty.create("angry");
+
     private static final int SPREAD_ATTEMPTS = 3;
+
+    private int prevAngryTimeTicks = 0;
 
     private static final Predicate<Iterable<ItemStack>> pumpkinHelmetPredicate = armorItemStacks -> {
         for (var itemStack : armorItemStacks) {
@@ -32,6 +44,14 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
     public OmniscientObsidianBlock() {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.CRYING_OBSIDIAN).randomTicks());
+        this.registerDefaultState(getStateDefinition().any()
+                .setValue(ANGRY, false)
+        );
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(ANGRY);
     }
 
     @Override
@@ -50,8 +70,10 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
        super.randomTick(state, level, pos, random);
-        if(!level.isClientSide && random.nextDouble() < 0.0280D)
+        if(!level.isClientSide && random.nextDouble() < 0.0280D) {
+            level.setBlockAndUpdate(pos, state.setValue(ANGRY, false));
             tickSpread(state, level, pos, random);
+        }
     }
 
     private void tickSpread(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -74,13 +96,7 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
     @Override
     public boolean beforeBreakBlock(Level level, Player player, BlockPos pos, BlockState state, BlockEntity entity) {
-        if (player instanceof ServerPlayer serverPlayer) {
-            if (serverPlayer.isCreative()) return true;
-            else if (isPlayerVisible(serverPlayer)) {
-                knockBackPlayer(level, serverPlayer, RandomSource.create());
-                return true;
-            }
-        }
+        // TODO - Maybe add some functionality here
         return true;
     }
 
@@ -88,8 +104,15 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
     protected void attack(BlockState state, Level level, BlockPos pos, Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             if (isPlayerVisible(serverPlayer)) {
-                player.hurt(level.damageSources().generic(), 1F);
-                knockBackPlayer(level, serverPlayer, RandomSource.create());
+                var random = RandomSource.create();
+                player.hurt(TerritorialDamageSources.observed(level), 6F);
+                level.setBlockAndUpdate(pos, state.setValue(ANGRY, true));
+
+                if (random.nextDouble() < 0.5)
+                    knockBackPlayer(level, serverPlayer, random);
+                else
+                    MovementUtils.randomTeleport((ServerLevel) level, serverPlayer, 0, 12,
+                            true, SoundEvents.CHORUS_FRUIT_TELEPORT);
             }
         }
         super.attack(state, level, pos, player);
@@ -97,11 +120,13 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
     private void knockBackPlayer(Level level, ServerPlayer player, RandomSource random) {
         var direction = player.getDirection().getNormal();
-        float randomPitch = random.nextFloat() / 3;
-        float randomKnockback = random.nextFloat() + 0.5F;
+        float randomPitch = random.nextFloat() / 2;
+        float randomKnockback = 0.3F + (random.nextFloat() / 2);
 
-        level.playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_SCREAM, SoundSource.BLOCKS, 0.1F, randomPitch);
-        player.knockback(randomKnockback, direction.getX() * ((random.nextDouble() / 2)), direction.getZ() * ((random.nextDouble() / 2)));
+        level.playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_SCREAM, SoundSource.BLOCKS,
+                0.1F, randomPitch);
+        player.knockback(randomKnockback, direction.getX() * ((random.nextDouble() / 2)),
+                direction.getZ() * ((random.nextDouble() / 2)));
     }
 
     private static boolean isPlayerVisible(ServerPlayer player) {

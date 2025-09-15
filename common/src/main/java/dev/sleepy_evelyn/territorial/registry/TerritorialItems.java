@@ -10,10 +10,10 @@ import java.util.function.Supplier;
 
 import static dev.sleepy_evelyn.territorial.Territorial.MOD_ID;
 
-public class ItemsRegistry {
+public class TerritorialItems {
 
     /* Instance required for Fzzy Translations */
-    public static ItemsRegistry INSTANCE = new ItemsRegistry();
+    public static TerritorialItems INSTANCE = new TerritorialItems();
 
     public Registrar<Item> ITEMS = ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.ITEM);
 

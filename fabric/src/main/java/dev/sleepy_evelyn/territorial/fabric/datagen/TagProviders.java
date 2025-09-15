@@ -1,30 +1,28 @@
 package dev.sleepy_evelyn.territorial.fabric.datagen;
 
-import dev.sleepy_evelyn.territorial.registry.BlocksRegistry;
-import dev.sleepy_evelyn.territorial.registry.ItemsRegistry;
+import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
+import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
 import java.util.concurrent.CompletableFuture;
 
-class TagProvider {
+import static dev.sleepy_evelyn.territorial.Territorial.mcId;
 
-    private static final TagKey<Block> PICKAXE_MINEABLE = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", "mineable/pickaxe"));
+class TagProviders {
 
-    TagProvider() {}
+    TagProviders() {}
 
     static class ItemTags extends FabricTagProvider.ItemTagProvider {
 
-        private final ItemsRegistry items;
+        private final TerritorialItems ITEMS = TerritorialItems.INSTANCE;
 
         ItemTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
             super(output, completableFuture);
-            this.items = ItemsRegistry.INSTANCE;
         }
 
         @Override
@@ -33,17 +31,18 @@ class TagProvider {
 
     static class BlockTags extends FabricTagProvider.BlockTagProvider {
 
-        private final BlocksRegistry blocks;
+        private final TerritorialBlocks BLOCKS = TerritorialBlocks.INSTANCE;
+
+        private final TagKey<Block> PICKAXE_MINEABLE = TagKey.create(Registries.BLOCK, mcId("mineable/pickaxe"));
 
         BlockTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
             super(output, completableFuture);
-            this.blocks = BlocksRegistry.INSTANCE;
         }
 
         @Override
         protected void addTags(HolderLookup.Provider provider) {
             getOrCreateTagBuilder(PICKAXE_MINEABLE).add(
-                    blocks.OMNISCIENT_OBSIDIAN.get()
+                    BLOCKS.OMNISCIENT_OBSIDIAN.get()
             );
         }
     }

@@ -2,8 +2,8 @@ package dev.sleepy_evelyn.territorial.fabric.datagen;
 
 import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.config.TerritorialClientConfig;
-import dev.sleepy_evelyn.territorial.registry.BlocksRegistry;
-import dev.sleepy_evelyn.territorial.registry.ItemsRegistry;
+import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
+import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -11,17 +11,35 @@ import net.minecraft.core.HolderLookup;
 
 import java.util.concurrent.CompletableFuture;
 
+import static dev.sleepy_evelyn.territorial.fabric.utils.LangUtils.damageTypeKey;
+import static dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSources.OBSERVED_DAMAGE_TYPE;
+
 class EnUsLangProvider extends FabricLanguageProvider {
-    protected EnUsLangProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
-        super(dataOutput, "en_us", registryLookup);
+
+    protected EnUsLangProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> lookup) {
+        super(dataOutput, "en_us", lookup);
     }
 
     @Override
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder builder) {
-        // Config Translations
-        ConfigApiJava.buildTranslations(TerritorialClientConfig.class, Territorial.id("client"), "en_us", true, builder::add);
-        // Registration Translations
-        ConfigApiJava.platform().buildRegistryTranslations(BlocksRegistry.INSTANCE, "block", "en_us", true, builder::add);
-        ConfigApiJava.platform().buildRegistryTranslations(ItemsRegistry.INSTANCE, "item", "en_us", true, builder::add);
+        addFzzyTranslations(builder);
+        addDatapackTranslations(builder);
+    }
+
+    private void addFzzyTranslations(TranslationBuilder builder) {
+        ConfigApiJava.buildTranslations(
+                TerritorialClientConfig.class, Territorial.id("client"), "en_us",
+                true, builder::add
+        );
+        ConfigApiJava.platform().buildRegistryTranslations(
+                TerritorialBlocks.INSTANCE, "block", "en_us", true, builder::add
+        );
+        ConfigApiJava.platform().buildRegistryTranslations(
+                TerritorialItems.INSTANCE, "item", "en_us", true, builder::add
+        );
+    }
+
+    private void addDatapackTranslations(TranslationBuilder builder) {
+        builder.add(damageTypeKey(OBSERVED_DAMAGE_TYPE), "%s was observed by Omniscient Obsidian");
     }
 }

@@ -1,6 +1,6 @@
-package dev.sleepy_evelyn.territorial.events;
+package dev.sleepy_evelyn.territorial.event;
 
-import dev.sleepy_evelyn.territorial.blocks.BlockBreakCancellable;
+import dev.sleepy_evelyn.territorial.block.BlockBreakCancellable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;

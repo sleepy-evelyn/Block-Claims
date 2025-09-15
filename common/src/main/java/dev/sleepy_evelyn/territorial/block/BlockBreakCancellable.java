@@ -1,4 +1,4 @@
-package dev.sleepy_evelyn.territorial.blocks;
+package dev.sleepy_evelyn.territorial.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

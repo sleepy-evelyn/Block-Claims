@@ -1,7 +1,7 @@
 package dev.sleepy_evelyn.territorial.fabric.events;
 
 import dev.sleepy_evelyn.territorial.Territorial;
-import dev.sleepy_evelyn.territorial.events.CommonEvents;
+import dev.sleepy_evelyn.territorial.event.CommonEvents;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.resources.ResourceLocation;

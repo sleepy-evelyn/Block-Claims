@@ -1,5 +1,6 @@
 {
   "block.territorial.omniscient_obsidian": "Omniscient Obsidian",
+  "death.attack.territorial.observed": "%s was observed by Omniscient Obsidian",
   "territorial.client": "Territorial Client Config",
   "territorial.client.clientTestInt": "Pretty cool text Integer"
 }

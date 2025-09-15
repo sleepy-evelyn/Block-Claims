@@ -10,8 +10,8 @@ public class TerritorialDataGen implements DataGeneratorEntrypoint {
         // Language providers
         pack.addProvider(EnUsLangProvider::new);
         // Tags
-        pack.addProvider(TagProvider.BlockTags::new);
-        pack.addProvider(TagProvider.ItemTags::new);
+        pack.addProvider(TagProviders.BlockTags::new);
+        pack.addProvider(TagProviders.ItemTags::new);
         // Loot Tables
         pack.addProvider(BlockLootTableProvider::new);
         // Datapack provider

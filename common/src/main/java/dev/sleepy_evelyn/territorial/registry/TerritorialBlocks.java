@@ -1,6 +1,6 @@
 package dev.sleepy_evelyn.territorial.registry;
 
-import dev.sleepy_evelyn.territorial.blocks.OmniscientObsidianBlock;
+import dev.sleepy_evelyn.territorial.block.OmniscientObsidianBlock;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.fzzyhmstrs.fzzy_config.util.Translatable;
 import me.fzzyhmstrs.fzzy_config.util.platform.Registrar;
@@ -14,10 +14,10 @@ import java.util.function.Supplier;
 
 import static dev.sleepy_evelyn.territorial.Territorial.MOD_ID;
 
-public class BlocksRegistry {
+public class TerritorialBlocks {
 
     /* Instance required for Fzzy Translations */
-    public static BlocksRegistry INSTANCE = new BlocksRegistry();
+    public static TerritorialBlocks INSTANCE = new TerritorialBlocks();
 
     public Registrar<Block> BLOCKS = ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.BLOCK);
 
@@ -27,7 +27,7 @@ public class BlocksRegistry {
 
     private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<Block> block) {
         var blockSupplier = registerBlock(path, block);
-        ItemsRegistry.INSTANCE.registerItem(path, () -> new BlockItem( blockSupplier.get(), new Item.Properties()));
+        TerritorialItems.INSTANCE.registerItem(path, () -> new BlockItem( blockSupplier.get(), new Item.Properties()));
         return blockSupplier;
     }
 

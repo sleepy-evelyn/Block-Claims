@@ -1,7 +1,7 @@
 package dev.sleepy_evelyn.territorial.neoforge.events;
 
 import dev.sleepy_evelyn.territorial.Territorial;
-import dev.sleepy_evelyn.territorial.events.CommonEvents;
+import dev.sleepy_evelyn.territorial.event.CommonEvents;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
