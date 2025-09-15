@@ -2,8 +2,8 @@ package dev.sleepy_evelyn.territorial.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -74,28 +74,37 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
     @Override
     public boolean beforeBreakBlock(Level level, Player player, BlockPos pos, BlockState state, BlockEntity entity) {
-        if (!level.isClientSide) {
-            if (player.isCreative()) return true;
-            else if (isPlayerVisible(player)) {
-                knockBackPlayer(player, RandomSource.create());
-                return false;
+        if (player instanceof ServerPlayer serverPlayer) {
+            if (serverPlayer.isCreative()) return true;
+            else if (isPlayerVisible(serverPlayer)) {
+                knockBackPlayer(level, serverPlayer, RandomSource.create());
+                return true;
             }
         }
         return true;
     }
 
-    private void knockBackPlayer(Player player, RandomSource random) {
-        var uniVec = player.getDirection().get2DDataValue();
-        player.sendSystemMessage(Component.literal("You got knocked back!"));
-
-        /*var unitVec = player.getHorizontalFacing().getUnitVector();
-        var randomPitch = random.nextFloat() / 3;
-
-        player.playSound(SoundEvents.ENTITY_ENDERMAN_SCREAM, SoundCategory.BLOCKS, 0.1F, randomPitch);
-        player.takeKnockback(1, unitVec.x * ((random.nextDouble() / 2) + 0.5), unitVec.z * ((random.nextDouble() / 2) + 0.5));*/
+    @Override
+    protected void attack(BlockState state, Level level, BlockPos pos, Player player) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            if (isPlayerVisible(serverPlayer)) {
+                player.hurt(level.damageSources().generic(), 1F);
+                knockBackPlayer(level, serverPlayer, RandomSource.create());
+            }
+        }
+        super.attack(state, level, pos, player);
     }
 
-    private static boolean isPlayerVisible(Player player) {
+    private void knockBackPlayer(Level level, ServerPlayer player, RandomSource random) {
+        var direction = player.getDirection().getNormal();
+        float randomPitch = random.nextFloat() / 3;
+        float randomKnockback = random.nextFloat() + 0.5F;
+
+        level.playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_SCREAM, SoundSource.BLOCKS, 0.1F, randomPitch);
+        player.knockback(randomKnockback, direction.getX() * ((random.nextDouble() / 2)), direction.getZ() * ((random.nextDouble() / 2)));
+    }
+
+    private static boolean isPlayerVisible(ServerPlayer player) {
         return !(player.isInvisible() || pumpkinHelmetPredicate.test(player.getArmorSlots()));
     }
 }
