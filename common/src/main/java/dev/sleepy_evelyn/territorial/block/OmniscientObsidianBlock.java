@@ -1,5 +1,6 @@
 package dev.sleepy_evelyn.territorial.block;
 
+import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
 import dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSources;
 import dev.sleepy_evelyn.territorial.util.MovementUtils;
 import net.minecraft.client.DeltaTracker;
@@ -72,16 +73,16 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
        super.randomTick(state, level, pos, random);
         if(!level.isClientSide && random.nextDouble() < 0.0280D) {
             level.setBlockAndUpdate(pos, state.setValue(ANGRY, false));
-            tickSpread(state, level, pos, random);
+            tickSpread(state, level, pos, random, Blocks.OBSIDIAN,false, 3);
         }
     }
 
-    private void tickSpread(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    private void tickSpread(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block matchBlock, boolean angry, int spreadAttempts) {
         BlockPos spreadPos;
-        for(int i=0; i < SPREAD_ATTEMPTS; i++) {
+        for (int i = 0; i < spreadAttempts; i++) {
             spreadPos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-            if(level.getBlockState(spreadPos).getBlock() == Blocks.OBSIDIAN) {
-                level.setBlockAndUpdate(spreadPos, state);
+            if (level.getBlockState(spreadPos).getBlock() == matchBlock) {
+                level.setBlockAndUpdate(spreadPos, angry ? state.setValue(ANGRY, true) : state);
                 break;
             }
         }
@@ -105,13 +106,16 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
         if (player instanceof ServerPlayer serverPlayer) {
             if (isPlayerVisible(serverPlayer)) {
                 var random = RandomSource.create();
+                var serverLevel = (ServerLevel) level;
+
                 player.hurt(TerritorialDamageSources.observed(level), 6F);
                 level.setBlockAndUpdate(pos, state.setValue(ANGRY, true));
+                tickSpread(state, serverLevel, pos, random, this.asBlock(), true, 10);
 
                 if (random.nextDouble() < 0.5)
                     knockBackPlayer(level, serverPlayer, random);
                 else
-                    MovementUtils.randomTeleport((ServerLevel) level, serverPlayer, 0, 12,
+                    MovementUtils.randomTeleport((ServerLevel) level, serverPlayer, 2, 10,
                             true, SoundEvents.CHORUS_FRUIT_TELEPORT);
             }
         }

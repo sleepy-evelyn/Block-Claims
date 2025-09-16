@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 @Translatable.Name("Territorial Client Config")
 public class TerritorialClientConfig extends Config {
     public TerritorialClientConfig() {
-        super(Territorial.id("client"));
+        super(Territorial.id("client_config"));
     }
 
     @Translatable.Name("Pretty cool text Integer")
