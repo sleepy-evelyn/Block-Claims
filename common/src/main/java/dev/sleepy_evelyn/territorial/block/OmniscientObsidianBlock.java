@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Properties;
 import java.util.function.Predicate;
@@ -31,10 +33,6 @@ import java.util.function.Predicate;
 public class OmniscientObsidianBlock extends Block implements BlockBreakCancellable {
 
     public static final BooleanProperty ANGRY = BooleanProperty.create("angry");
-
-    private static final int SPREAD_ATTEMPTS = 3;
-
-    private int prevAngryTimeTicks = 0;
 
     private static final Predicate<Iterable<ItemStack>> pumpkinHelmetPredicate = armorItemStacks -> {
         for (var itemStack : armorItemStacks) {
@@ -89,10 +87,13 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
     }
 
     @Override
-    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState state2, boolean bl) {
-        super.onPlace(state, level, pos, state2, bl);
-        if (!level.isClientSide)
-            level.playSound(null, pos, SoundEvents.END_PORTAL_FRAME_FILL, SoundSource.BLOCKS, 0.5F, 0.5F);
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity entity, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, entity, stack);
+        if (!level.isClientSide && entity != null) {
+            var random = RandomSource.create();
+            level.playSound(null, pos, SoundEvents.END_PORTAL_FRAME_FILL, SoundSource.BLOCKS,
+                    random.nextFloat() / 2, 0.4F);
+        }
     }
 
     @Override
@@ -107,13 +108,14 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
             if (isPlayerVisible(serverPlayer)) {
                 var random = RandomSource.create();
                 var serverLevel = (ServerLevel) level;
+                boolean isAngry = state.getValue(ANGRY);
 
-                player.hurt(TerritorialDamageSources.observed(level), 6F);
+                player.hurt(TerritorialDamageSources.observed(level), isAngry ? 8F : 2F);
                 level.setBlockAndUpdate(pos, state.setValue(ANGRY, true));
                 tickSpread(state, serverLevel, pos, random, this.asBlock(), true, 10);
 
-                if (random.nextDouble() < 0.5)
-                    knockBackPlayer(level, serverPlayer, random);
+                if (!isAngry || random.nextDouble() < 0.5)
+                    knockBackPlayer(level, serverPlayer, random, isAngry);
                 else
                     MovementUtils.randomTeleport((ServerLevel) level, serverPlayer, 2, 10,
                             true, SoundEvents.CHORUS_FRUIT_TELEPORT);
@@ -122,10 +124,10 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
         super.attack(state, level, pos, player);
     }
 
-    private void knockBackPlayer(Level level, ServerPlayer player, RandomSource random) {
+    private void knockBackPlayer(Level level, ServerPlayer player, RandomSource random, boolean angry) {
         var direction = player.getDirection().getNormal();
         float randomPitch = random.nextFloat() / 2;
-        float randomKnockback = 0.3F + (random.nextFloat() / 2);
+        float randomKnockback = 0.4F + (angry ? random.nextFloat() : 0);
 
         level.playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_SCREAM, SoundSource.BLOCKS,
                 0.1F, randomPitch);

@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -19,7 +20,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static dev.sleepy_evelyn.territorial.util.LangUtils.damageTypeKey;
 import static dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSources.OBSERVED_DAMAGE_TYPE;
-import static dev.sleepy_evelyn.territorial.util.LangUtils.translationKey;
 
 class EnUsLangProvider extends FabricLanguageProvider {
 
@@ -31,7 +31,7 @@ class EnUsLangProvider extends FabricLanguageProvider {
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder builder) {
         addFzzyTranslations(builder);
         addDatapackTranslations(builder);
-        builder.add(translationKey("creative_tab"), "Territorial");
+        builder.add("creative_tab." + Territorial.MOD_ID, "Territorial");
     }
 
     private void addFzzyTranslations(TranslationBuilder builder) {

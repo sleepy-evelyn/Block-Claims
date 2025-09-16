@@ -17,18 +17,18 @@ import static dev.sleepy_evelyn.territorial.Territorial.MOD_ID;
 
 public class TerritorialItems {
 
+    public static final ResourceKey<CreativeModeTab> CREATIVE_TAB_KEY = ResourceKey.create(
+            Registries.CREATIVE_MODE_TAB, Territorial.id("creative_tab"));
+
     /* Instance required for Fzzy Translations */
     public static TerritorialItems INSTANCE = new TerritorialItems();
 
-    public static final ResourceKey<CreativeModeTab> CREATIVE_TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
-            Territorial.id("territorial"));
-
     public Registrar<Item> ITEMS = ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.ITEM);
 
-    RegistrySupplier<Item> registerItem(String path, Supplier<Item> item) {
-        var itemSupplier = ITEMS.register(path, item);
-        TerritorialPlatform.addToCreativeTab(itemSupplier.get());
-        return itemSupplier;
+    public RegistrySupplier<Item> registerItem(String path, Supplier<Item> item) {
+        var registeredItem = ITEMS.register(path, item);
+        TerritorialPlatform.addToCreativeTab(registeredItem);
+        return registeredItem;
     }
 
     public void init() {

@@ -22,12 +22,16 @@ public class TerritorialBlocks {
     public Registrar<Block> BLOCKS = ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.BLOCK);
 
     @Translatable.Name("Omniscient Obsidian")
-    public RegistrySupplier<Block> OMNISCIENT_OBSIDIAN
-            = registerBlockWithItem("omniscient_obsidian", OmniscientObsidianBlock::new);
+    public RegistrySupplier<Block> OMNISCIENT_OBSIDIAN = registerBlockWithItem("omniscient_obsidian",
+            OmniscientObsidianBlock::new);
 
     private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<Block> block) {
+        return registerBlockWithItem(path, block, new Item.Properties());
+    }
+
+    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<Block> block, Item.Properties properties) {
         var blockSupplier = registerBlock(path, block);
-        TerritorialItems.INSTANCE.registerItem(path, () -> new BlockItem( blockSupplier.get(), new Item.Properties()));
+        TerritorialItems.INSTANCE.registerItem(path, () -> new BlockItem( blockSupplier.get(), properties));
         return blockSupplier;
     }
 

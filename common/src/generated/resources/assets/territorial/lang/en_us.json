@@ -3,6 +3,5 @@
   "creative_tab.territorial": "Territorial",
   "death.attack.territorial.observed": "%s was observed by Omniscient Obsidian",
   "territorial.client": "Territorial Client Config",
-  "territorial.client.clientTestInt": "Pretty cool text Integer",
-  "territorial.client.clientTestInt.prefix": "client_test_int"
+  "territorial.client.clientTestInt": "Pretty cool text Integer"
 }

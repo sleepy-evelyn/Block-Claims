@@ -6,8 +6,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.damagesource.*;
 import org.jetbrains.annotations.NotNull;
 
-import static dev.sleepy_evelyn.territorial.Territorial.langKey;
 import static dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSources.OBSERVED_DAMAGE_TYPE;
+import static dev.sleepy_evelyn.territorial.util.LangUtils.langKey;
 
 import java.util.concurrent.CompletableFuture;
 
