@@ -2,17 +2,12 @@ package dev.sleepy_evelyn.territorial.neoforge.registry;
 
 import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
-import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
-import dev.sleepy_evelyn.territorial.util.LangUtils;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
