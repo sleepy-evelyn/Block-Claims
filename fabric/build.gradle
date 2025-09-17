@@ -15,6 +15,7 @@ fabricApi {
         client = true
         addToResources = false
         createSourceSet = false
+        strictValidation = false
     }
 }
 
@@ -36,10 +37,7 @@ configurations {
 }
 
 repositories {
-    maven {
-        name = "FzzyMaven"
-        url = "https://maven.fzzyhmstrs.me/"
-    }
+    maven {url "https://maven.fzzyhmstrs.me/" } // Fzzy Config
 }
 
 dependencies {

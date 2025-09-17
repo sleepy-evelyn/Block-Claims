@@ -14,7 +14,7 @@ public final class Territorial {
     public static final String MOD_NAME = "Territorial Block Claims";
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
-    public static TerritorialConfig config = ConfigApiJava.registerAndLoadConfig(TerritorialConfig::new);
+    public static TerritorialConfig CONFIG = ConfigApiJava.registerAndLoadConfig(TerritorialConfig::new);
 
     public static void init() {
         TerritorialItems.INSTANCE.init();

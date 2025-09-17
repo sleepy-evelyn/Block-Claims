@@ -26,17 +26,17 @@ configurations {
 
 repositories {
     maven {
-        name = 'NeoForged'
         url = 'https://maven.neoforged.net/releases'
         content {
             includeGroupAndSubgroups "net.neoforged"
             includeGroupAndSubgroups "cpw.mods"
         }
     }
-    maven {
-        name = "Kotlin For Forge"
-        url = "https://thedarkcolour.github.io/KotlinForForge/"
-    }
+    maven {url "https://thedarkcolour.github.io/KotlinForForge/" } // KotlinForForge
+    maven {url "https://maven.dragons.plus/releases" } // Dragons+ & Enchantment Industry
+    maven { url "https://mvn.devos.one/snapshots" } // Registrate
+    maven { url 'https://maven.fallenbreath.me/releases' } // Conditional Mixin
+    maven { url "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // NeoForge config api port, needed by ponder
 }
 
 dependencies {
@@ -44,8 +44,13 @@ dependencies {
 
     // TODO - Fzzy config and KotlinForForge have to be manually added to the mod directory for now
 
+    // Create Enchantment Industry + Create (Bundled)
+    modLocalRuntime ("plus.dragons.createdragonsplus:create-dragons-plus-${minecraft_version}:${create_dragons_plus_version}")
+    modCompileOnly ("plus.dragons.createenchantmentindustry:create-enchantment-industry-${minecraft_version}:${create_enchantment_industry_version}")
+    modLocalRuntime ("plus.dragons.createenchantmentindustry:create-enchantment-industry-${minecraft_version}:${create_enchantment_industry_version}")
+
     // Fzzy Config
-    modCompileOnly ("me.fzzyhmstrs:fzzy_config:$fzzy_config_version+neoforge")
+    modCompileOnly "me.fzzyhmstrs:fzzy_config:$fzzy_config_version+neoforge"
 
     // Development QOL
     modLocalRuntime "dev.emi:emi-neoforge:$emi_version+$minecraft_version"

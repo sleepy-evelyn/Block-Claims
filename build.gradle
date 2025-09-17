@@ -28,26 +28,25 @@ subprojects {
     }
 
     repositories {
-        maven {
-            name = "TerraformersMC"
-            url = "https://maven.terraformersmc.com/"
-        }
         exclusiveContent {
             forRepository {
-                maven {
-                    name = "Modrinth"
-                    url = "https://api.modrinth.com/maven"
-                }
+                maven {url "https://api.modrinth.com/maven" } // Modrinth
             }
-            // Prevent searching through all imports
             filter {
                 includeGroup "maven.modrinth"
             }
         }
-        maven {
-            name = "FzzyMaven"
-            url = "https://maven.fzzyhmstrs.me/"
+        exclusiveContent {
+            forRepository {
+                maven {url "https://cursemaven.com" } // Curseforge
+            }
+            filter {
+                includeGroup "curse.maven"
+            }
         }
+        maven {url "https://maven.terraformersmc.com/" }
+        maven {url "https://maven.fzzyhmstrs.me/" } // Fzzy Config
+        maven { url "https://maven.createmod.net" } // Ponder, Flywheel
     }
 
     dependencies {

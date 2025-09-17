@@ -15,6 +15,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 
 @EventBusSubscriber(modid = Territorial.MOD_ID)
 public final class CommonEventsNeoforge {
@@ -29,6 +30,11 @@ public final class CommonEventsNeoforge {
         boolean breakProceeds = CommonEvents.beforeBlockBreak(
                 (Level) e.getLevel(), e.getPlayer(), pos, e.getState(), blockEntity);
         e.setCanceled(!breakProceeds);
+    }
+
+    @SubscribeEvent
+    public static void onPlayerSleep(SleepFinishedTimeEvent e) {
+        // Code here
     }
 
     @SubscribeEvent

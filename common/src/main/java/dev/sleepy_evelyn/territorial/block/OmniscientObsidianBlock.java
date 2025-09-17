@@ -28,6 +28,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
+import static dev.sleepy_evelyn.territorial.Territorial.CONFIG;
+
 public class OmniscientObsidianBlock extends Block implements BlockBreakCancellable {
 
     public static final BooleanProperty ANGRY = BooleanProperty.create("angry");
@@ -66,10 +68,12 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-       super.randomTick(state, level, pos, random);
-        if(!level.isClientSide && random.nextDouble() < 0.0280D) {
+        super.randomTick(state, level, pos, random);
+        boolean canSpread = CONFIG.omniscientObsidian.allowSpread;
+
+        if(!level.isClientSide && canSpread && random.nextDouble() < getSpreadRate()) {
             level.setBlockAndUpdate(pos, state.setValue(ANGRY, false));
-            BlockUtils.spreadBlocks(state, level, pos, random, Blocks.OBSIDIAN,3);
+            BlockUtils.spreadBlocks(state, level, pos, random, Blocks.CRYING_OBSIDIAN,3);
         }
     }
 
@@ -91,7 +95,9 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
     @Override
     protected void attack(BlockState state, Level level, BlockPos pos, Player player) {
-        if (player instanceof ServerPlayer serverPlayer) {
+        boolean canAttack = CONFIG.omniscientObsidian.attacksPlayer;
+
+        if (canAttack && player instanceof ServerPlayer serverPlayer) {
             if (isPlayerVisible(serverPlayer)) {
                 var random = RandomSource.create();
                 var angryState = state.setValue(ANGRY, true);
@@ -123,6 +129,15 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
                 direction.getZ() * ((random.nextDouble() / 2)));
     }
 
+    private double getSpreadRate() {
+        return switch (CONFIG.omniscientObsidian.spreadRate) {
+            case Fast -> 0.08D;
+            case Default -> 0.02D;
+            case Slow -> 0.005D;
+
+        };
+    }
+
     private static boolean isPlayerVisible(ServerPlayer player) {
         return !(player.isInvisible() || pumpkinHelmetPredicate.test(player.getArmorSlots()));
     }
@@ -139,7 +154,7 @@ public class OmniscientObsidianBlock extends Block implements BlockBreakCancella
 
                 level.setBlockAndUpdate(belowPlayerPos, newState);
                 BlockUtils.spreadBlocks(newState, (ServerLevel) level, belowPlayerPos, RandomSource.create(),
-                        Blocks.OBSIDIAN,20);
+                        Blocks.CRYING_OBSIDIAN,20);
             }
         }
     }

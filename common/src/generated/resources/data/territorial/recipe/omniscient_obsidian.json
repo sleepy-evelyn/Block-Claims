@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:crying_obsidian"
+    },
+    {
+      "item": "minecraft:player_head"
+    },
+    {
+      "tag": "territorial:xp_items"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "territorial:omniscient_obsidian"
+  }
+}

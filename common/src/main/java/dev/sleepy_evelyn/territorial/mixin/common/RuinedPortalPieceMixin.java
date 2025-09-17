@@ -41,7 +41,7 @@ public class RuinedPortalPieceMixin extends TemplateStructurePiece {
         )
     )
     public void postProcess(WorldGenLevel level, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource random, BoundingBox chunkBox, ChunkPos chunkPos, BlockPos pivot, CallbackInfo ci) {
-        if (random.nextDouble() > 0.3) {
+        if (random.nextDouble() > 0.5) {
             BoundingBox bb = this.getBoundingBox();
             var minPos = new BlockPos(bb.minX(), bb.minY(), bb.minZ());
             var maxPos = new BlockPos(bb.maxX(), bb.maxY(), bb.maxZ());

@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:experience_bottle",
+    {
+      "id": "create_enchantment_industry:experience_nugget",
+      "required": false
+    },
+    {
+      "id": "create_enchantment_industry:experience_bucket",
+      "required": false
+    }
+  ]
+}

@@ -7,14 +7,12 @@ public class TerritorialDataGen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator generator) {
         var pack = generator.createPack();
-        // Language providers
+
         pack.addProvider(EnUsLangProvider::new);
-        // Tags
-        pack.addProvider(TagProviders.BlockTags::new);
-        pack.addProvider(TagProviders.ItemTags::new);
-        // Loot Tables
+        pack.addProvider(TagProviders.BlockProvider::new);
+        pack.addProvider(TagProviders.ItemProvider::new);
         pack.addProvider(BlockLootTableProvider::new);
-        // Datapack provider
         pack.addProvider(DynamicRegistryProvider::new);
+        pack.addProvider(RecipeProvider::new);
     }
 }

@@ -2,12 +2,14 @@ package dev.sleepy_evelyn.territorial.fabric.datagen;
 
 import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.config.TerritorialClientConfig;
+import dev.sleepy_evelyn.territorial.config.TerritorialConfig;
 import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
 import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -28,16 +30,14 @@ class EnUsLangProvider extends FabricLanguageProvider {
     }
 
     private void addFzzyTranslations(TranslationBuilder builder) {
-        ConfigApiJava.buildTranslations(
-                TerritorialClientConfig.class, Territorial.id("client"), "en_us",
-                true, builder::add
-        );
-        ConfigApiJava.platform().buildRegistryTranslations(
-                TerritorialBlocks.INSTANCE, "block", "en_us", true, builder::add
-        );
-        ConfigApiJava.platform().buildRegistryTranslations(
-                TerritorialItems.INSTANCE, "item", "en_us", true, builder::add
-        );
+        ConfigApiJava.buildTranslations(TerritorialClientConfig.class, Territorial.id("client"),
+                "en_us", true, builder::add);
+        ConfigApiJava.buildTranslations(TerritorialConfig.class, Territorial.id("common"),
+                "en_us", true, builder::add);
+        ConfigApiJava.platform().buildRegistryTranslations(TerritorialBlocks.INSTANCE, "block",
+                "en_us", true, builder::add);
+        ConfigApiJava.platform().buildRegistryTranslations(TerritorialItems.INSTANCE, "item",
+                "en_us", true, builder::add);
     }
 
     private void addDatapackTranslations(TranslationBuilder builder) {

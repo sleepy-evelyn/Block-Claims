@@ -3,5 +3,12 @@
   "creative_tab.territorial": "Territorial",
   "death.attack.territorial.observed": "%s was observed by Omniscient Obsidian",
   "territorial.client": "Territorial Client Config",
-  "territorial.client.clientTestInt": "Pretty cool text Integer"
+  "territorial.client.clientTestInt": "Pretty cool text Integer",
+  "territorial.common.omniscientObsidian": "Omniscient Obsidian",
+  "territorial.common.omniscientObsidian.allowSpread": "Allow Spread",
+  "territorial.common.omniscientObsidian.allowSpread.desc": "Gradually propagate to other Obsidian blocks",
+  "territorial.common.omniscientObsidian.attacksPlayer": "Attacks Player",
+  "territorial.common.omniscientObsidian.attacksPlayer.desc": "Attack if the block is hit while the player is visible",
+  "territorial.common.omniscientObsidian.spreadRate": "Spread Rate",
+  "territorial.common.omniscientObsidian.spreadRate.desc": ""
 }

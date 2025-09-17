@@ -1,6 +1,5 @@
 package dev.sleepy_evelyn.territorial.util;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 
