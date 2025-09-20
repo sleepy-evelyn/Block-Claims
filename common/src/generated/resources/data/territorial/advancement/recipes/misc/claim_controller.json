@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_ender_eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ender_eye"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_omniscient_obsidian": {
       "conditions": {
         "items": [
@@ -13,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "territorial:omniscient_obsidian"
+        "recipe": "territorial:claim_controller"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +31,13 @@
   "requirements": [
     [
       "has_the_recipe",
+      "has_ender_eye",
       "has_omniscient_obsidian"
     ]
   ],
   "rewards": {
     "recipes": [
-      "territorial:omniscient_obsidian"
+      "territorial:claim_controller"
     ]
   }
 }

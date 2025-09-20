@@ -9,15 +9,16 @@ import java.util.concurrent.CompletableFuture;
 
 class BlockLootTableProvider extends FabricBlockLootTableProvider {
 
-    final TerritorialBlocks blocks;
+    private final TerritorialBlocks BLOCKS;
 
     protected BlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, registryLookup);
-        this.blocks = TerritorialBlocks.INSTANCE;
+        this.BLOCKS = TerritorialBlocks.BLOCKS;
     }
 
     @Override
     public void generate() {
-        dropSelf(blocks.OMNISCIENT_OBSIDIAN.get());
+        dropSelf(BLOCKS.OMNISCIENT_OBSIDIAN.get());
+        dropSelf(BLOCKS.OMNISCIENT_OBSIDIAN_DECAYED.get());
     }
 }

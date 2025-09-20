@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "enabled=false": { "model": "territorial:block/claim_controller" },
+    "enabled=true": { "model": "territorial:block/claim_controller_active" }
+  }
+}

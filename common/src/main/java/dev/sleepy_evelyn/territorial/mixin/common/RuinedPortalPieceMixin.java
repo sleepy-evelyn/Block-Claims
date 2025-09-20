@@ -1,6 +1,5 @@
 package dev.sleepy_evelyn.territorial.mixin.common;
 
-import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -63,7 +62,7 @@ public class RuinedPortalPieceMixin extends TemplateStructurePiece {
             for(int i=0; i < numOmniscientObsidian; i++) {
                 int randomIdx = random.nextInt(obsidianPositions.size());
                 level.setBlock(obsidianPositions.get(randomIdx),
-                        TerritorialBlocks.INSTANCE.OMNISCIENT_OBSIDIAN.get().defaultBlockState(), 3);
+                        TerritorialBlocks.BLOCKS.OMNISCIENT_OBSIDIAN.get().defaultBlockState(), 3);
             }
         }
     }

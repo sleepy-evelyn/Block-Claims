@@ -3,18 +3,24 @@ package dev.sleepy_evelyn.territorial.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BlockUtils {
 
-    public static void spreadBlocks(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block matchBlock, int spreadAttempts) {
+    public static void spreadBlocks(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, int spreadAttempts, Block... matchBlocks) {
         BlockPos spreadPos;
+
         for (int i = 0; i < spreadAttempts; i++) {
             spreadPos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-            if (level.getBlockState(spreadPos).getBlock() == matchBlock) {
-                level.setBlockAndUpdate(spreadPos, state);
-                break;
+            var currentBlock = level.getBlockState(spreadPos).getBlock();
+
+            for (var matchBlock : matchBlocks) {
+                if (currentBlock.equals(matchBlock)) {
+                    level.setBlock(spreadPos, state, Block.UPDATE_CLIENTS);
+                    break;
+                }
             }
         }
     }

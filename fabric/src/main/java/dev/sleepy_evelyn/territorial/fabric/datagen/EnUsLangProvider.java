@@ -9,7 +9,6 @@ import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.resources.ResourceLocation;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -34,9 +33,9 @@ class EnUsLangProvider extends FabricLanguageProvider {
                 "en_us", true, builder::add);
         ConfigApiJava.buildTranslations(TerritorialConfig.class, Territorial.id("common"),
                 "en_us", true, builder::add);
-        ConfigApiJava.platform().buildRegistryTranslations(TerritorialBlocks.INSTANCE, "block",
+        ConfigApiJava.platform().buildRegistryTranslations(TerritorialBlocks.BLOCKS, "block",
                 "en_us", true, builder::add);
-        ConfigApiJava.platform().buildRegistryTranslations(TerritorialItems.INSTANCE, "item",
+        ConfigApiJava.platform().buildRegistryTranslations(TerritorialItems.ITEMS, "item",
                 "en_us", true, builder::add);
     }
 

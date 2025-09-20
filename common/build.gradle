@@ -2,12 +2,6 @@ architectury {
     common rootProject.enabled_platforms.split(',')
 }
 
-// Common Data Generation
-/**tasks.register("runData") {
-    dependsOn project(":fabric").tasks.named("runDatagen")
-    dependsOn project(":neoforge").tasks.named("runData")
-}**/
-
 sourceSets {
     main {
         resources { // include generated resources in resources
@@ -19,9 +13,9 @@ sourceSets {
 
 dependencies {
     // Only depending on Fabric Loader for @Environment annotation
-    modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version"
+    modImplementation("net.fabricmc:fabric-loader:$fabric_loader_version")
     // Fzzy Config
-    modCompileOnly "me.fzzyhmstrs:fzzy_config:$fzzy_config_version"
+    modCompileOnly("me.fzzyhmstrs:fzzy_config:$fzzy_config_version")
     // EMI Common Integration
-    modCompileOnly "dev.emi:emi-xplat-intermediary:$emi_version+$minecraft_version:api"
+    modCompileOnly("dev.emi:emi-xplat-intermediary:$emi_version+$minecraft_version:api")
 }

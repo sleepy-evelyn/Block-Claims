@@ -1,7 +1,10 @@
 {
+  "block.territorial.claim_controller": "Claim Controller",
   "block.territorial.omniscient_obsidian": "Omniscient Obsidian",
+  "block.territorial.omniscient_obsidian_decayed": "Decayed Omniscient Obsidian",
   "creative_tab.territorial": "Territorial",
   "death.attack.territorial.observed": "%s was observed by Omniscient Obsidian",
+  "item.territorial.augmented_eye": "Augmented Eye",
   "territorial.client": "Territorial Client Config",
   "territorial.client.clientTestInt": "Pretty cool text Integer",
   "territorial.common.omniscientObsidian": "Omniscient Obsidian",

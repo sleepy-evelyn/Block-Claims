@@ -20,7 +20,7 @@ public class VanillaLootModifiers {
     }
 
     private static void addOmniscientObsidianLoot(LootTableModifierShared modifier) {
-        var omniscientObsidianItem = TerritorialBlocks.INSTANCE.OMNISCIENT_OBSIDIAN.get().asItem();
+        var omniscientObsidianItem = TerritorialBlocks.BLOCKS.OMNISCIENT_OBSIDIAN.get().asItem();
         var poolBuilder = LootPool.lootPool()
                 .add(LootItem.lootTableItem(omniscientObsidianItem))
                 .when(LootItemRandomChanceCondition.randomChance(0.5F))

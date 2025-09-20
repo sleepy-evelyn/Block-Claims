@@ -24,7 +24,7 @@ public class TerritorialNeoForgeObjects {
     private static final Supplier<CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register(
             "main", () -> CreativeModeTab.builder()
                     .title(Component.translatable("creative_tab." + Territorial.MOD_ID))
-                    .icon(() -> new ItemStack(TerritorialBlocks.INSTANCE.OMNISCIENT_OBSIDIAN.get()))
+                    .icon(() -> new ItemStack(TerritorialBlocks.BLOCKS.OMNISCIENT_OBSIDIAN.get()))
                     .displayItems((params, output) -> CREATIVE_TAB_ITEMS.forEach(
                             itemSupplier -> output.accept(itemSupplier.get())))
                     .build()

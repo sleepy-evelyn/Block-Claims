@@ -4,3 +4,4 @@
 - Get Mixins working for NeoForge
 - Optimize Omniscient Obsidian spread
 - Test Omniscient Obsidian spread rate
+- Check achievement recipe unlocks actually work

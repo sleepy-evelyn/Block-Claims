@@ -2,7 +2,7 @@
   "values": [
     "minecraft:experience_bottle",
     {
-      "id": "create_enchantment_industry:experience_nugget",
+      "id": "create:experience_nugget",
       "required": false
     },
     {

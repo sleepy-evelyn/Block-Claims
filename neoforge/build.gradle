@@ -32,6 +32,8 @@ repositories {
             includeGroupAndSubgroups "cpw.mods"
         }
     }
+    maven {url "https://maven.shadowsoffire.dev/releases" } // Apotheosis and dependencies
+    maven {url "https://maven.theillusivec4.top" } // Curios
     maven {url "https://thedarkcolour.github.io/KotlinForForge/" } // KotlinForForge
     maven {url "https://maven.dragons.plus/releases" } // Dragons+ & Enchantment Industry
     maven { url "https://mvn.devos.one/snapshots" } // Registrate
@@ -42,18 +44,20 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:$neoforge_version"
 
-    // TODO - Fzzy config and KotlinForForge have to be manually added to the mod directory for now
-
-    // Create Enchantment Industry + Create (Bundled)
-    modLocalRuntime ("plus.dragons.createdragonsplus:create-dragons-plus-${minecraft_version}:${create_dragons_plus_version}")
-    modCompileOnly ("plus.dragons.createenchantmentindustry:create-enchantment-industry-${minecraft_version}:${create_enchantment_industry_version}")
-    modLocalRuntime ("plus.dragons.createenchantmentindustry:create-enchantment-industry-${minecraft_version}:${create_enchantment_industry_version}")
-
     // Fzzy Config
-    modCompileOnly "me.fzzyhmstrs:fzzy_config:$fzzy_config_version+neoforge"
+    // TODO - Fzzy config and KotlinForForge have to be manually added to the mod directory for now
+    modCompileOnly("me.fzzyhmstrs:fzzy_config:$fzzy_config_version+neoforge")
+
+    // Create Enchantment Industry (Optional)
+    modLocalRuntime("plus.dragons.createdragonsplus:create-dragons-plus-${minecraft_version}:${create_dragons_plus_version}")
+    modLocalRuntime("plus.dragons.createenchantmentindustry:create-enchantment-industry-${minecraft_version}:${create_enchantment_industry_version}")
+
+    // Apotheosis and dependencies (Optional)
+    modLocalRuntime("dev.shadowsoffire:Apotheosis:${minecraft_version}-${apotheosis_version}")
 
     // Development QOL
-    modLocalRuntime "dev.emi:emi-neoforge:$emi_version+$minecraft_version"
+    modLocalRuntime("dev.emi:emi-neoforge:$emi_version+$minecraft_version")
+    modLocalRuntime("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')

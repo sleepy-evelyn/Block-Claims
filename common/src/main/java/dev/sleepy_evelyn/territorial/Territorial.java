@@ -2,6 +2,7 @@ package dev.sleepy_evelyn.territorial;
 
 import dev.sleepy_evelyn.territorial.compat.Mods;
 import dev.sleepy_evelyn.territorial.config.TerritorialConfig;
+import dev.sleepy_evelyn.territorial.registry.TerritorialBlockEntities;
 import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
 import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
@@ -17,8 +18,9 @@ public final class Territorial {
     public static TerritorialConfig CONFIG = ConfigApiJava.registerAndLoadConfig(TerritorialConfig::new);
 
     public static void init() {
-        TerritorialItems.INSTANCE.init();
-        TerritorialBlocks.INSTANCE.init();
+        TerritorialItems.ITEMS.init();
+        TerritorialBlocks.BLOCKS.init();
+        TerritorialBlockEntities.BEs.init();
         Mods.EMI.executeIfInstalled(() -> () -> LOGGER.info("EMI is loaded"));
     }
 
@@ -28,5 +30,9 @@ public final class Territorial {
 
     public static ResourceLocation mcId(String path) {
         return ResourceLocation.fromNamespaceAndPath("minecraft", path);
+    }
+
+    public static ResourceLocation commonId(String path) {
+        return ResourceLocation.fromNamespaceAndPath("c", path);
     }
 }

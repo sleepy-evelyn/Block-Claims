@@ -14,7 +14,7 @@ import static dev.sleepy_evelyn.territorial.registry.TerritorialItems.CREATIVE_T
 public class TerritorialFabricObjects {
 
     private static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(TerritorialBlocks.INSTANCE.OMNISCIENT_OBSIDIAN.get()))
+            .icon(() -> new ItemStack(TerritorialBlocks.BLOCKS.OMNISCIENT_OBSIDIAN.get()))
             .title(Component.translatable("creative_tab." + Territorial.MOD_ID))
             .build();
 
