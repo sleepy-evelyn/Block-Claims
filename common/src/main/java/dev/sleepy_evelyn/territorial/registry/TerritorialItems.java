@@ -2,6 +2,7 @@ package dev.sleepy_evelyn.territorial.registry;
 
 import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.TerritorialPlatform;
+import dev.sleepy_evelyn.territorial.item.AugmentedEye;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.fzzyhmstrs.fzzy_config.util.Translatable;
 import me.fzzyhmstrs.fzzy_config.util.platform.Registrar;
@@ -30,8 +31,11 @@ public class TerritorialItems {
             ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.ITEM);
 
     @Translatable.Name("Augmented Eye")
-    public RegistrySupplier<Item> AUGMENTED_EYE =
-            registerItem("augmented_eye", () -> new EnderEyeItem(new Item.Properties()));
+    public RegistrySupplier<Item> AUGMENTED_EYE = registerItem("augmented_eye", AugmentedEye::new);
+
+    @Translatable.Name("Numismatics Augment")
+    public RegistrySupplier<Item> NUMISMATICS_AUGMENT =
+            registerItem("augments/augment_numismatics", () -> new Item(new Item.Properties()));
 
     public RegistrySupplier<Item> registerItem(String path, Supplier<Item> item) {
         return registerItem(path, item, true);

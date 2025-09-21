@@ -8,13 +8,16 @@
     "G": {
       "tag": "c:ingots/gold"
     },
+    "M": {
+      "item": "minecraft:map"
+    },
     "O": {
       "item": "minecraft:obsidian"
     }
   },
   "pattern": [
     " E ",
-    "GOG",
+    "GMG",
     "OOO"
   ],
   "result": {

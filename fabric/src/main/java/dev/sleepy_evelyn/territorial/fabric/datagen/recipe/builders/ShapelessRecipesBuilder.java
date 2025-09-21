@@ -16,7 +16,7 @@ public final class ShapelessRecipesBuilder extends BaseRecipesBuilder<ShapelessR
     }
 
     @Override
-    public ShapelessRecipesBuilder start(ItemLike output, int amount) {
+    public ShapelessRecipesBuilder startNew(ItemLike output, int amount) {
         this.pushBuilder();
         currentBuilder = new ShapelessRecipeBuilder(category, output, amount);
         return this;

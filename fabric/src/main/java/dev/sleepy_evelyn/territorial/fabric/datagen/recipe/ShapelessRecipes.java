@@ -26,7 +26,7 @@ public class ShapelessRecipes extends FabricRecipeProvider {
         var recipesBuilder = new ShapelessRecipesBuilder(exporter);
 
         // Omniscient Obsidian
-        recipesBuilder.start(BLOCKS.OMNISCIENT_OBSIDIAN.get(), 1)
+        recipesBuilder.startNew(BLOCKS.OMNISCIENT_OBSIDIAN.get(), 1)
                 .requires(Blocks.CRYING_OBSIDIAN, Blocks.PLAYER_HEAD)
                 .requires(List.of(TerritorialTags.XP_ITEMS))
                 .unlockedByInputs(BLOCKS.OMNISCIENT_OBSIDIAN.get());

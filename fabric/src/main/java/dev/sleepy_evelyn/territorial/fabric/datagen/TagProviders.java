@@ -8,11 +8,13 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
 import static dev.sleepy_evelyn.territorial.registry.TerritorialBlocks.BLOCKS;
+import static dev.sleepy_evelyn.territorial.registry.TerritorialItems.ITEMS;
 
 class TagProviders {
 
@@ -31,6 +33,9 @@ class TagProviders {
                     .add(Items.EXPERIENCE_BOTTLE)
                     .addOptional(Mods.CREATE.rl("experience_nugget"))
                     .addOptional(Mods.CREATE_ENCHANTMENT_INDUSTRY.rl("experience_bucket"));
+            // Dyeable
+            getOrCreateTagBuilder(ItemTags.DYEABLE)
+                    .add(ITEMS.AUGMENTED_EYE.get());
         }
     }
 
@@ -42,6 +47,7 @@ class TagProviders {
 
         @Override
         protected void addTags(HolderLookup.Provider provider) {
+            // Mineable with pickaxe
             getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                     .add(BLOCKS.OMNISCIENT_OBSIDIAN.get())
                     .add(BLOCKS.OMNISCIENT_OBSIDIAN_DECAYED.get());

@@ -16,7 +16,7 @@ public final class ShapedRecipesBuilder extends BaseRecipesBuilder<ShapedRecipeB
     }
 
     @Override
-    public ShapedRecipesBuilder start(ItemLike output, int amount) {
+    public ShapedRecipesBuilder startNew(ItemLike output, int amount) {
         this.pushBuilder();
         currentBuilder = new ShapedRecipeBuilder(category, output, amount);
         return this;

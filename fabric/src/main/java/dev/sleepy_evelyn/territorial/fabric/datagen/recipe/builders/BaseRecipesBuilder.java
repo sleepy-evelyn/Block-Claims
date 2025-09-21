@@ -23,7 +23,7 @@ public abstract class BaseRecipesBuilder<T extends RecipeBuilder> {
         this.category = RecipeCategory.MISC;
     }
 
-    protected abstract BaseRecipesBuilder<T> start(ItemLike output, int amount);
+    protected abstract BaseRecipesBuilder<T> startNew(ItemLike output, int amount);
 
     protected void pushBuilder() {
         if (currentBuilder != null) recipeBuilders.add(currentBuilder);
