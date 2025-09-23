@@ -2,6 +2,7 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "territorial:item/augmented_eye",
-    "layer1": "territorial:item/augmented_eye_overlay"
+    "layer1": "territorial:item/augmented_eye_overlay",
+    "layer2": "territorial:item/augmented_eye_pupil"
   }
 }

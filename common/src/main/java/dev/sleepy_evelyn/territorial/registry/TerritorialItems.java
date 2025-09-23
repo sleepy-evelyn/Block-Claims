@@ -34,8 +34,17 @@ public class TerritorialItems {
     public RegistrySupplier<Item> AUGMENTED_EYE = registerItem("augmented_eye", AugmentedEye::new);
 
     @Translatable.Name("Numismatics Augment")
-    public RegistrySupplier<Item> NUMISMATICS_AUGMENT =
-            registerItem("augments/augment_numismatics", () -> new Item(new Item.Properties()));
+    public RegistrySupplier<Item> NUMISMATICS_AUGMENT = registerDummyItem("augments/augment_numismatics");
+
+    @Translatable.Name("Computercraft Augment")
+    public RegistrySupplier<Item> COMPUTERCRAFT_AUGMENT = registerDummyItem("augments/augment_computercraft");
+
+    @Translatable.Name("Gloop Ball")
+    public RegistrySupplier<Item> GLOOP_BALL = registerDummyItem("gloop_ball");
+
+    public RegistrySupplier<Item> registerDummyItem(String path) {
+        return registerItem(path, () -> new Item(new Item.Properties()), true);
+    }
 
     public RegistrySupplier<Item> registerItem(String path, Supplier<Item> item) {
         return registerItem(path, item, true);
