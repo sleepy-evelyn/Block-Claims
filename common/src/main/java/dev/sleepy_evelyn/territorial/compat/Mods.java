@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.Block;
 public enum Mods {
     EMI,
     CREATE,
+    COMPUTERCRAFT,
     CREATE_ENCHANTMENT_INDUSTRY;
 
     private final String id;

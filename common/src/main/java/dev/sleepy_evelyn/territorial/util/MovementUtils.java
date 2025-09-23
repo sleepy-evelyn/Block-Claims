@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-public class MovementUtils {
+public final class MovementUtils {
 
     public static void randomTeleport(ServerLevel level, ServerPlayer player) {
         randomTeleport(level, player, 0, 16, true, SoundEvents.CHORUS_FRUIT_TELEPORT);

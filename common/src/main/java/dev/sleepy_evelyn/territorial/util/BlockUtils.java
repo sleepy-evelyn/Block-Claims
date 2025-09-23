@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockUtils {
+public final class BlockUtils {
 
     public static void spreadBlocks(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, int spreadAttempts, Block... matchBlocks) {
         BlockPos spreadPos;

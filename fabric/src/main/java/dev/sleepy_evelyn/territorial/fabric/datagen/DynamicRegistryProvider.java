@@ -23,6 +23,7 @@ class DynamicRegistryProvider extends FabricDynamicRegistryProvider {
     }
 
     private void addDamageTypes(Entries entries) {
+        // TODO - This doesn't work on Neoforge
         entries.add(OBSERVED_DAMAGE_TYPE, new DamageType(langKey(OBSERVED_DAMAGE_TYPE),
                 DamageScaling.NEVER, 0.1F));
     }
