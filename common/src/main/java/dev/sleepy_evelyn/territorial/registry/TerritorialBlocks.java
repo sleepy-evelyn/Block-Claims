@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -38,17 +39,17 @@ public class TerritorialBlocks {
     public RegistrySupplier<Block> CLAIM_CONTROLLER =
             registerBlockWithItem("claim_controller", ClaimControllerBlock::new);
 
-    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<Block> block) {
+    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<@NotNull Block> block) {
         return registerBlockWithItem(path, block, new Item.Properties(), true);
     }
 
-    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<Block> block, boolean addToCreativeTab) {
+    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<@NotNull Block> block, boolean addToCreativeTab) {
         return registerBlockWithItem(path, block, new Item.Properties(), addToCreativeTab);
     }
 
-    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<Block> block, Item.Properties properties, boolean addToCreativeTab) {
+    private RegistrySupplier<Block> registerBlockWithItem(String path, Supplier<@NotNull Block> block, Item.Properties properties, boolean addToCreativeTab) {
         var blockSupplier = registerBlock(path, block);
-        TerritorialItems.ITEMS.registerItem(path, () -> new BlockItem( blockSupplier.get(), properties), addToCreativeTab);
+        TerritorialItems.ITEMS.registerItem(path, () -> new BlockItem(blockSupplier.get(), properties), addToCreativeTab);
         return blockSupplier;
     }
 

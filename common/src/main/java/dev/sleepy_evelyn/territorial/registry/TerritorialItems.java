@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.EnderEyeItem;
 import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Properties;
 import java.util.function.Supplier;
@@ -46,11 +47,11 @@ public class TerritorialItems {
         return registerItem(path, () -> new Item(new Item.Properties()), true);
     }
 
-    public RegistrySupplier<Item> registerItem(String path, Supplier<Item> item) {
+    public RegistrySupplier<Item> registerItem(String path, Supplier<@NotNull Item> item) {
         return registerItem(path, item, true);
     }
 
-    public RegistrySupplier<Item> registerItem(String path, Supplier<Item> item, boolean addToCreativeTab) {
+    public RegistrySupplier<Item> registerItem(String path, Supplier<@NotNull Item> item, boolean addToCreativeTab) {
         var registeredItem = itemsRegistrar.register(path, item);
         if (addToCreativeTab) TerritorialPlatform.addToCreativeTab(registeredItem);
         return registeredItem;

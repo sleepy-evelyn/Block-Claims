@@ -8,6 +8,6 @@ import net.minecraft.world.level.block.state.BlockState;
 public class ClaimControllerBlockEntity extends BlockEntity {
 
     public ClaimControllerBlockEntity(BlockPos pos, BlockState state) {
-        super(TerritorialBlockEntities.BEs.CLAIM_CONTROLLER.get(), pos, state);
+        super(TerritorialBlockEntities.CLAIM_CONTROLLER.get(), pos, state);
     }
 }

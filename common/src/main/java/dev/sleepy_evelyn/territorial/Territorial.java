@@ -20,7 +20,7 @@ public final class Territorial {
     public static void init() {
         TerritorialItems.ITEMS.init();
         TerritorialBlocks.BLOCKS.init();
-        TerritorialBlockEntities.BEs.init();
+        TerritorialBlockEntities.init();
         Mods.EMI.executeIfInstalled(() -> () -> LOGGER.info("EMI is loaded"));
     }
 

@@ -21,7 +21,6 @@ public class TerritorialColourProviders {
 
     private static class AugmentedEyeColours {
         private AugmentedEyeColours() {}
-
         static final int OVERLAY_ALPHA = 220;
         static final int DEFAULT_OVERLAY = FastColor.ARGB32.color(OVERLAY_ALPHA, 124, 242, 245);
         static final int DEFAULT_PUPIL = FastColor.ARGB32.color(OVERLAY_ALPHA, 60,60, 60);
