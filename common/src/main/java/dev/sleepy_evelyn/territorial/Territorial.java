@@ -6,6 +6,7 @@ import dev.sleepy_evelyn.territorial.registry.TerritorialBlockEntities;
 import dev.sleepy_evelyn.territorial.registry.TerritorialBlocks;
 import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
+import me.fzzyhmstrs.fzzy_config.util.platform.impl.PlatformApiImpl;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

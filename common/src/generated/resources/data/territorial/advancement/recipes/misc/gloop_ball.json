@@ -11,11 +11,11 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_slime_ball": {
+    "has_magma_cream": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:slime_ball"
+            "items": "minecraft:magma_cream"
           }
         ]
       },
@@ -32,7 +32,7 @@
     [
       "has_the_recipe",
       "has_fermented_spider_eye",
-      "has_slime_ball"
+      "has_magma_cream"
     ]
   ],
   "rewards": {

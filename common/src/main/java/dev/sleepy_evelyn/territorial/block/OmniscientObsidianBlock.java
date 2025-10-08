@@ -1,7 +1,7 @@
 package dev.sleepy_evelyn.territorial.block;
 
 import dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSources;
-import dev.sleepy_evelyn.territorial.util.BlockUtils;
+import dev.sleepy_evelyn.territorial.util.ObjectUtils;
 import dev.sleepy_evelyn.territorial.util.MovementUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,7 +10,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -19,13 +18,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -79,7 +75,7 @@ public class OmniscientObsidianBlock extends Block {
 
         if(!level.isClientSide && canSpread && random.nextDouble() < getSpreadRate()) {
             state = state.setValue(ANGRY, false);
-            BlockUtils.spreadBlocks(state, level, pos, random, 3, Blocks.CRYING_OBSIDIAN);
+            ObjectUtils.spreadBlocks(state, level, pos, random, 3, Blocks.CRYING_OBSIDIAN);
         }
     }
 
@@ -107,7 +103,7 @@ public class OmniscientObsidianBlock extends Block {
 
                 player.hurt(TerritorialDamageSources.observed(level), isAngry ? 8F : 2F);
                 level.setBlockAndUpdate(pos, angryState);
-                BlockUtils.spreadBlocks(angryState, serverLevel, pos, random, 8, asBlock());
+                ObjectUtils.spreadBlocks(angryState, serverLevel, pos, random, 8, asBlock());
 
                 if (!isAngry || random.nextDouble() < 0.5)
                     knockBackPlayer(serverLevel, serverPlayer, random, isAngry);
@@ -153,7 +149,7 @@ public class OmniscientObsidianBlock extends Block {
                 var newState = BLOCKS.OMNISCIENT_OBSIDIAN.get().defaultBlockState();
 
                 level.setBlockAndUpdate(belowPlayerPos, newState);
-                BlockUtils.spreadBlocks(newState, (ServerLevel) level, belowPlayerPos, RandomSource.create(),
+                ObjectUtils.spreadBlocks(newState, (ServerLevel) level, belowPlayerPos, RandomSource.create(),
                         12, Blocks.CRYING_OBSIDIAN, BLOCKS.OMNISCIENT_OBSIDIAN_DECAYED.get());
             }
         }

@@ -4,8 +4,11 @@ import java.util.Locale;
 import java.util.function.Supplier;
 
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -32,6 +35,7 @@ public enum Mods {
     EMI,
     CREATE,
     COMPUTERCRAFT,
+    NUMISMATICS,
     CREATE_ENCHANTMENT_INDUSTRY;
 
     private final String id;
@@ -57,6 +61,10 @@ public enum Mods {
 
     public Item getItem(String id) {
         return BuiltInRegistries.ITEM.get(rl(id));
+    }
+
+    public <T> TagKey<T> getTagKey(ResourceKey<Registry<T>> key, String path) {
+        return TagKey.create(key, rl(path));
     }
 
     /**

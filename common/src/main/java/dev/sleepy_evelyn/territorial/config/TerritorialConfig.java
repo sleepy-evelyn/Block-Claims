@@ -39,6 +39,11 @@ public class TerritorialConfig extends Config {
         public boolean attacksPlayer = true;
     }
 
+    @Translatable.Name("Enable Pumpkin Polly")
+    @Translatable.Desc("")
+    @RequiresAction(action = Action.RESTART)
+    public boolean enablePollyThePumpkin = false;
+
     @Override
     public int defaultPermLevel() {
         return 3; // Required to be an admin to make changes

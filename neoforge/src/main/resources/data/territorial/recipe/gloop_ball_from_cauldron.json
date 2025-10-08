@@ -1,0 +1,21 @@
+{
+  "type": "amendments:cauldron_crafting",
+  "group": "misc",
+  "input_items": [
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:fermented_spider_eye"
+    }
+  ],
+  "input_fluid": {
+    "id": "moonlight:water"
+  },
+  "output_item": {
+    "id": "territorial:gloop_ball",
+    "Count": 1
+  },
+  "require_boiling": true,
+  "fluid_amount_difference": -1
+}

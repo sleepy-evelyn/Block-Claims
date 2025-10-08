@@ -1,6 +1,7 @@
 package dev.sleepy_evelyn.territorial.fabric.datagen.recipe;
 
 import dev.sleepy_evelyn.territorial.Territorial;
+import dev.sleepy_evelyn.territorial.compat.Mods;
 import dev.sleepy_evelyn.territorial.fabric.datagen.recipe.builders.ShapelessRecipesBuilder;
 import dev.sleepy_evelyn.territorial.registry.TerritorialItems;
 import dev.sleepy_evelyn.territorial.registry.TerritorialTags;
@@ -12,6 +13,8 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,14 +40,14 @@ public class ShapelessRecipes extends FabricRecipeProvider {
         // Omniscient Obsidian
         recipesBuilder.startNew(BLOCKS.OMNISCIENT_OBSIDIAN.get(), 1)
                 .requires(Blocks.CRYING_OBSIDIAN, Blocks.PLAYER_HEAD)
-                .requires(List.of(TerritorialTags.XP_ITEMS))
+                .requires(TerritorialTags.XP_ITEMS)
                 .unlockedByInputs(BLOCKS.OMNISCIENT_OBSIDIAN.get());
 
         // Gloop Ball
         recipesBuilder.startNew(ITEMS.GLOOP_BALL.get(), 1)
-                .requires(List.of(SLIMEBALLS_C_TAG))
                 .requires(Items.FERMENTED_SPIDER_EYE)
-                .unlockedByInputs(Items.FERMENTED_SPIDER_EYE, Items.SLIME_BALL);
+                .requires(Items.MAGMA_CREAM)
+                .unlockedByInputs(Items.FERMENTED_SPIDER_EYE, Items.MAGMA_CREAM);
 
         recipesBuilder.saveAll();
     }

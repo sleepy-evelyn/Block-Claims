@@ -16,7 +16,7 @@ A wrapper for claims mods that allows you to claim, configure and sell land with
 [[dependencies.territorial]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1,)"
+versionRange = "[21.1.205,)"
 ordering = "NONE"
 side = "BOTH"
 

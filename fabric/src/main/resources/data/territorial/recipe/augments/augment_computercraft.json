@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "territorial:gloop_ball"
+    },
+    {
+      "tag": "computercraft:computer"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "territorial:augments/augment_computercraft"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "computercraft"
+      ]
+    }
+  ]
+}

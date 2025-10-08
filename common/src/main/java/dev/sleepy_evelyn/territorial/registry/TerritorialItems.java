@@ -2,23 +2,28 @@ package dev.sleepy_evelyn.territorial.registry;
 
 import dev.sleepy_evelyn.territorial.Territorial;
 import dev.sleepy_evelyn.territorial.TerritorialPlatform;
+import dev.sleepy_evelyn.territorial.compat.Mods;
 import dev.sleepy_evelyn.territorial.item.AugmentedEye;
+import dev.sleepy_evelyn.territorial.util.PlatformUtils;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.fzzyhmstrs.fzzy_config.util.Translatable;
 import me.fzzyhmstrs.fzzy_config.util.platform.Registrar;
 import me.fzzyhmstrs.fzzy_config.util.platform.RegistrySupplier;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.EnderEyeItem;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Properties;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import static dev.sleepy_evelyn.territorial.Territorial.MOD_ID;
+import static dev.sleepy_evelyn.territorial.util.ObjectUtils.dummyItem;
 
 public class TerritorialItems {
 
@@ -35,23 +40,23 @@ public class TerritorialItems {
     public RegistrySupplier<Item> AUGMENTED_EYE = registerItem("augmented_eye", AugmentedEye::new);
 
     @Translatable.Name("Numismatics Augment")
-    public RegistrySupplier<Item> NUMISMATICS_AUGMENT = registerDummyItem("augments/augment_numismatics");
+    public RegistrySupplier<Item> NUMISMATICS_AUGMENT = registerItem("augments/augment_numismatics",
+           dummyItem(), Mods.NUMISMATICS::isLoaded, true);
 
     @Translatable.Name("Computercraft Augment")
-    public RegistrySupplier<Item> COMPUTERCRAFT_AUGMENT = registerDummyItem("augments/augment_computercraft");
+    public RegistrySupplier<Item> COMPUTERCRAFT_AUGMENT = registerItem("augments/augment_computercraft",
+            dummyItem(), Mods.COMPUTERCRAFT::isLoaded, true);
 
     @Translatable.Name("Gloop Ball")
-    public RegistrySupplier<Item> GLOOP_BALL = registerDummyItem("gloop_ball");
-
-    public RegistrySupplier<Item> registerDummyItem(String path) {
-        return registerItem(path, () -> new Item(new Item.Properties()), true);
-    }
+    public RegistrySupplier<Item> GLOOP_BALL = registerItem("gloop_ball", dummyItem());
 
     public RegistrySupplier<Item> registerItem(String path, Supplier<@NotNull Item> item) {
-        return registerItem(path, item, true);
+        return Objects.requireNonNull(registerItem(path, item, () -> true, true));
     }
 
-    public RegistrySupplier<Item> registerItem(String path, Supplier<@NotNull Item> item, boolean addToCreativeTab) {
+    @Nullable
+    public RegistrySupplier<Item> registerItem(String path, Supplier<@NotNull Item> item, Supplier<Boolean> condition, boolean addToCreativeTab) {
+        if (!condition.get() && !PlatformUtils.isDataGenEnv()) return null;
         var registeredItem = itemsRegistrar.register(path, item);
         if (addToCreativeTab) TerritorialPlatform.addToCreativeTab(registeredItem);
         return registeredItem;

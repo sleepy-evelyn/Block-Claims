@@ -20,5 +20,7 @@ class BlockLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         dropSelf(BLOCKS.OMNISCIENT_OBSIDIAN.get());
         dropSelf(BLOCKS.OMNISCIENT_OBSIDIAN_DECAYED.get());
+        dropSelf(BLOCKS.CLAIM_CONTROLLER.get());
+        dropSelf(BLOCKS.PUMPKIN_POLLY.get());
     }
 }

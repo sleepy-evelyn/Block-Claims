@@ -27,7 +27,8 @@ public final class ShapelessRecipesBuilder extends BaseRecipesBuilder<ShapelessR
         return this;
     }
 
-    public ShapelessRecipesBuilder requires(List<TagKey<Item>> itemTags) {
+    @SafeVarargs
+    public final ShapelessRecipesBuilder requires(TagKey<Item>... itemTags) {
         for (var tag : itemTags) currentBuilder.requires(tag);
         return this;
     }
