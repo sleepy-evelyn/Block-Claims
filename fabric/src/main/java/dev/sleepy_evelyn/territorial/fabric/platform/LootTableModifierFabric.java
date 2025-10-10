@@ -4,7 +4,7 @@ import dev.sleepy_evelyn.territorial.platform.LootTableModifierShared;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 
-public final class LootTableModifierFabric implements LootTableModifierShared {
+public class LootTableModifierFabric implements LootTableModifierShared {
 
     private final LootTable.Builder tableBuilder;
 

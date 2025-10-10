@@ -16,7 +16,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.storage.loot.LootTable;
 
-public final class CommonEventsFabric {
+public class CommonEventsFabric {
 
     private static final ResourceLocation EARLY_PHASE = Territorial.id("early");
 

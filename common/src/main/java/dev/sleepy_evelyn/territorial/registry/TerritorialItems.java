@@ -32,24 +32,24 @@ public class TerritorialItems {
             ResourceKey.create(Registries.CREATIVE_MODE_TAB, id("creative_tab"));
 
     /* Instance required for Fzzy Translations */
-    public static TerritorialItems ITEMS = new TerritorialItems();
+    public static final TerritorialItems ITEMS = new TerritorialItems();
 
     private final Registrar<Item> itemsRegistrar =
             ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.ITEM);
 
     @Translatable.Name("Augmented Eye")
-    public RegistrySupplier<Item> AUGMENTED_EYE = registerItem("augmented_eye", AugmentedEye::new);
+    public final RegistrySupplier<Item> AUGMENTED_EYE = registerItem("augmented_eye", AugmentedEye::new);
 
     @Translatable.Name("Numismatics Augment")
-    public RegistrySupplier<Item> NUMISMATICS_AUGMENT = registerItem("augments/augment_numismatics",
+    public final RegistrySupplier<Item> NUMISMATICS_AUGMENT = registerItem("augments/augment_numismatics",
            dummyItem(), Mods.NUMISMATICS::isLoaded, true);
 
     @Translatable.Name("Computercraft Augment")
-    public RegistrySupplier<Item> COMPUTERCRAFT_AUGMENT = registerItem("augments/augment_computercraft",
+    public final RegistrySupplier<Item> COMPUTERCRAFT_AUGMENT = registerItem("augments/augment_computercraft",
             dummyItem(), Mods.COMPUTERCRAFT::isLoaded, true);
 
     @Translatable.Name("Gloop Ball")
-    public RegistrySupplier<Item> GLOOP_BALL = registerItem("gloop_ball", dummyItem());
+    public final RegistrySupplier<Item> GLOOP_BALL = registerItem("gloop_ball", dummyItem());
 
     public RegistrySupplier<Item> registerItem(String path, Supplier<@NotNull Item> item) {
         return Objects.requireNonNull(registerItem(path, item, () -> true, true));

@@ -17,7 +17,7 @@ import static dev.sleepy_evelyn.territorial.registry.dynamic.TerritorialDamageSo
 
 class EnUsLangProvider extends FabricLanguageProvider {
 
-    protected EnUsLangProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> lookup) {
+    EnUsLangProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> lookup) {
         super(dataOutput, "en_us", lookup);
     }
 

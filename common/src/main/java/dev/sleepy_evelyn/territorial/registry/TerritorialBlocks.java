@@ -24,26 +24,26 @@ import static dev.sleepy_evelyn.territorial.Territorial.MOD_ID;
 public class TerritorialBlocks {
 
     /* Instance required for Fzzy Translations */
-    public static TerritorialBlocks BLOCKS = new TerritorialBlocks();
+    public static final TerritorialBlocks BLOCKS = new TerritorialBlocks();
 
     private final Registrar<Block> blocksRegistrar =
             ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.BLOCK);
 
     @Translatable.Name("Omniscient Obsidian")
-    public RegistrySupplier<Block> OMNISCIENT_OBSIDIAN =
+    public final RegistrySupplier<Block> OMNISCIENT_OBSIDIAN =
             registerBlockWithItem("omniscient_obsidian", OmniscientObsidianBlock::new);
 
     @Translatable.Name("Decayed Omniscient Obsidian")
-    public RegistrySupplier<Block> OMNISCIENT_OBSIDIAN_DECAYED =
+    public final RegistrySupplier<Block> OMNISCIENT_OBSIDIAN_DECAYED =
             registerBlockWithItem("omniscient_obsidian_decayed", () ->
                     new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)), () -> true, false);
 
     @Translatable.Name("Claim Controller")
-    public RegistrySupplier<Block> CLAIM_CONTROLLER =
+    public final RegistrySupplier<Block> CLAIM_CONTROLLER =
             registerBlockWithItem("claim_controller", ClaimControllerBlock::new);
 
     @Translatable.Name("Pumpkin Polly")
-    public RegistrySupplier<Block> PUMPKIN_POLLY =
+    public final RegistrySupplier<Block> PUMPKIN_POLLY =
             registerBlockWithItem("pumpkin_polly", PumpkinPollyBlock::new,
                     () -> Territorial.CONFIG.enablePollyThePumpkin, false);
 

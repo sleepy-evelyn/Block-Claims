@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.RenderType;
 
-public final class TerritorialFabricClient implements ClientModInitializer {
+public class TerritorialFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         TerritorialClient.init();

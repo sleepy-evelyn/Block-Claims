@@ -18,7 +18,7 @@ public class TerritorialBlockEntities {
     private static final Registrar<BlockEntityType<?>> blockEntityTypeRegistrar =
             ConfigApiJava.platform().createRegistrar(MOD_ID, BuiltInRegistries.BLOCK_ENTITY_TYPE);
 
-    public static RegistrySupplier<BlockEntityType<?>> CLAIM_CONTROLLER =
+    public static final RegistrySupplier<BlockEntityType<?>> CLAIM_CONTROLLER =
             register("claim_controller", ClaimControllerBlockEntity::new, TerritorialBlocks.BLOCKS.CLAIM_CONTROLLER);
 
     @SafeVarargs

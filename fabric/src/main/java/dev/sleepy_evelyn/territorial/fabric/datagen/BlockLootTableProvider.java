@@ -10,7 +10,7 @@ import static dev.sleepy_evelyn.territorial.registry.TerritorialBlocks.BLOCKS;
 
 class BlockLootTableProvider extends FabricBlockLootTableProvider {
 
-    protected BlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+    BlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
