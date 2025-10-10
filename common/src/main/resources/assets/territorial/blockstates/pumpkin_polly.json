@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "territorial:block/pumpkin_polly" },
-    "facing=south": { "model":  "territorial:block/pumpkin_polly", "y": 180 },
-    "facing=west": { "model": "territorial:block/pumpkin_polly", "y": 270 },
-    "facing=east": { "model":  "territorial:block/pumpkin_polly", "y": 90 }
-  }
-}

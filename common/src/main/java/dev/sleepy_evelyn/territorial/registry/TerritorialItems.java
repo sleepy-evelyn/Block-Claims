@@ -23,12 +23,13 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 import static dev.sleepy_evelyn.territorial.Territorial.MOD_ID;
+import static dev.sleepy_evelyn.territorial.Territorial.id;
 import static dev.sleepy_evelyn.territorial.util.ObjectUtils.dummyItem;
 
 public class TerritorialItems {
 
     public static final ResourceKey<CreativeModeTab> CREATIVE_TAB_KEY =
-            ResourceKey.create(Registries.CREATIVE_MODE_TAB, Territorial.id("creative_tab"));
+            ResourceKey.create(Registries.CREATIVE_MODE_TAB, id("creative_tab"));
 
     /* Instance required for Fzzy Translations */
     public static TerritorialItems ITEMS = new TerritorialItems();

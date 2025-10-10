@@ -6,7 +6,7 @@
 		"column": "block/enchanting_table_bottom",
 		"bottom": "block/enchanting_table_bottom",
 		"top": "territorial:block/claim_controller_top",
-		"side": "territorial:block/claim_controller_active"
+		"side": "territorial:block/claim_controller_side_enabled"
 	},
 	"elements": [
 		{

@@ -8,10 +8,12 @@ import me.fzzyhmstrs.fzzy_config.util.Translatable;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+import static dev.sleepy_evelyn.territorial.Territorial.id;
+
 @Translatable.Name("Territorial Client Config")
 public class TerritorialClientConfig extends Config {
     public TerritorialClientConfig() {
-        super(Territorial.id("client"));
+        super(id("client"));
     }
 
     @Translatable.Name("Pretty cool text Integer")

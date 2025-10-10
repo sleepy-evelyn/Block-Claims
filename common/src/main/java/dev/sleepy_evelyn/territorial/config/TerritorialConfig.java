@@ -7,6 +7,8 @@ import me.fzzyhmstrs.fzzy_config.config.ConfigGroup;
 import me.fzzyhmstrs.fzzy_config.config.ConfigSection;
 import me.fzzyhmstrs.fzzy_config.util.Translatable;
 
+import static dev.sleepy_evelyn.territorial.Territorial.id;
+
 @RootConfig
 @Version(version = 1)
 public class TerritorialConfig extends Config {
@@ -18,7 +20,7 @@ public class TerritorialConfig extends Config {
     }
 
     public TerritorialConfig() {
-        super(Territorial.id("common"));
+        super(id("common"));
     }
 
     @Translatable.Name("Omniscient Obsidian")

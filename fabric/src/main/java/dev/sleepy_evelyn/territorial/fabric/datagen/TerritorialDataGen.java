@@ -17,5 +17,6 @@ public class TerritorialDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(DynamicRegistryProvider::new);
         pack.addProvider(ShapelessRecipes::new);
         pack.addProvider(ShapedRecipes::new);
+        pack.addProvider(ModelProvider::new);
     }
 }

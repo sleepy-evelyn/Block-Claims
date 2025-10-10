@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class PumpkinPollyBlock extends Block {
 
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public PumpkinPollyBlock() {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK));

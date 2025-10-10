@@ -20,8 +20,6 @@ import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 @EventBusSubscriber(modid = Territorial.MOD_ID)
 public final class CommonEventsNeoforge {
 
-    private static final ResourceKey<LootTable> RUINED_PORTAL_LOOT_TABLE = BuiltInLootTables.RUINED_PORTAL;
-
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onBreakEvent(BlockEvent.BreakEvent e) {
         var pos = e.getPos();

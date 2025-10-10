@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "angry=false": {
+      "model": "territorial:block/omniscient_obsidian"
+    },
+    "angry=true": {
+      "model": "territorial:block/omniscient_obsidian_angry"
+    }
+  }
+}

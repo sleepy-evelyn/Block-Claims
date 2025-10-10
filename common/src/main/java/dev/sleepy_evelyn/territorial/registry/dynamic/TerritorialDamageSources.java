@@ -9,10 +9,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
+import static dev.sleepy_evelyn.territorial.Territorial.id;
+
 public class TerritorialDamageSources {
 
     public static final ResourceKey<DamageType> OBSERVED_DAMAGE_TYPE =
-            ResourceKey.create(Registries.DAMAGE_TYPE, Territorial.id("observed"));
+            ResourceKey.create(Registries.DAMAGE_TYPE, id("observed"));
 
     public static DamageSource observed(Level level) {
         return TerritorialDamageSources.create(level, OBSERVED_DAMAGE_TYPE);
