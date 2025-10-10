@@ -27,8 +27,6 @@ import static dev.sleepy_evelyn.territorial.registry.TerritorialItems.ITEMS;
 
 public class ShapelessRecipes extends FabricRecipeProvider {
 
-    private final TagKey<Item> SLIMEBALLS_C_TAG = TagKey.create(Registries.ITEM, commonId("slime_balls"));
-
     public ShapelessRecipes(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }

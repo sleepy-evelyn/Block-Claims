@@ -11,14 +11,10 @@ import net.minecraft.data.models.blockstates.PropertyDispatch;
 import net.minecraft.data.models.blockstates.Variant;
 import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplate;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-import java.util.List;
-import java.util.function.Supplier;
 
 import static dev.sleepy_evelyn.territorial.Territorial.id;
 import static dev.sleepy_evelyn.territorial.registry.TerritorialBlocks.BLOCKS;
@@ -44,10 +40,8 @@ class ModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators generator) {
         generator.generateFlatItem(ITEMS.GLOOP_BALL.get(), ModelTemplates.FLAT_ITEM);
-        generateAugmentItems(generator,
-                ITEMS.COMPUTERCRAFT_AUGMENT.get(),
-                ITEMS.NUMISMATICS_AUGMENT.get()
-        );
+        generateAugmentItems(generator, ITEMS.COMPUTERCRAFT_AUGMENT.get(),
+                ITEMS.NUMISMATICS_AUGMENT.get());
     }
 
     private MultiVariantGenerator booleanModelState(Block block, BooleanProperty booleanProperty) {
